@@ -30,10 +30,27 @@ nav_order: 4
 | hardware decides when       | OS decides when                 |
 | hardware needs to save PC   | OS needs to save PC + registers |
 | processor PC changes        | thread program counter changes  |
+
 **Example Signal Program**
-<div style="text-align: center;">
-  <img src="{{ '/images/Screenshot 2024-09-15 at 5.18.19 PM.png' | relative_url}}" alt="Screenshot" width="400">
-</div>
+
+```C
+void handle_sigint(int signum) { /* signum == SIGINT */
+	write(1, "Control-C pressed?!\n", sizeof("Control-C pressed?!\n"));
+}
+int main(void) {
+	struct sigaction act;
+	act.sa_handler = &handle_sigint;
+	sigemptyset(&act.sa_mask);
+	// SA_RESTART = if syscall interrupted, complete it when handler returns
+	act.sa_flags = SA_RESTART;
+	sigaction(SIGINT, &act, NULL);
+
+	char buf[1024];
+	while (fgets(buf, sizeof buf, stdin)) {
+		printf("read %s", buf);
+	}
+}
+```
 
 <div style="text-align: center;">
   <img src="{{ '/images/Screenshot 2024-09-15 at 5.19.05 PM.png' | relative_url}}" alt="Screenshot" width="400">
@@ -43,6 +60,7 @@ nav_order: 4
 <div style="text-align: center;">
   <img src="{{ '/images/Screenshot 2024-09-10 at 3.10.34 PM.png' | relative_url}}" alt="Screenshot" width="500">
 </div>
+
 ## Signal API
 1. `sigaction`: register handler for signal
 2. `kill`: sends signal to process using process ID
@@ -71,6 +89,7 @@ kill -USR1 1234
 <div style="text-align: center;">
   <img src="{{ '/images/Screenshot 2024-09-18 at 12.04.01 AM.png' | relative_url}}" alt="Screenshot" width="500">
 </div>
+
 ## Signal Handler Unsafety
 *example*
 
@@ -87,9 +106,11 @@ void handle_signint(){
 	printf("You pressed control-C.\n");
 }
 ```
+
 <div style="text-align: center;">
   <img src="{{ '/images/Screenshot 2024-09-18 at 10.08.11 AM.png' | relative_url}}" alt="Screenshot">
 </div>
+
 ## Signal Handler Safety
 - POSIX defines “async-signal-safe” functions
 - work correctly no matter what the function interrupts

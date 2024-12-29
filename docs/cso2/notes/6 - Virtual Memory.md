@@ -93,7 +93,7 @@ nav_order: 6
 ## `mmap`
 - function to “map”/link a file to memory
 
-```C
+``` C
 int file = open("somefile.dat", O_RDWR);
 // data is region of memory that represents file
 char *data = mmap(..., file, 0);

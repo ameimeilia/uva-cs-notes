@@ -107,7 +107,7 @@ essential operations:
 ## File Descriptors
 - fork copies open file list, exec preserves open files
 
-```C
+``` C
 // process table
 struct process_info {
 	... // pid, register files, page table, ptr, etc.
@@ -117,6 +117,7 @@ struct process_info {
 ...
 process->files[file_descriptor]
 ```
+
 - Unix: every process has an array of open file descriptions
 - “open file”: terminal, socket, regular file, pipe
 - file descriptor = int index into array

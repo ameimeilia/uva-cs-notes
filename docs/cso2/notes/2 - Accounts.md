@@ -17,7 +17,7 @@ nav_order: 2
 
 **Groups**
 
-``` shell
+```shell
 gid_t getegid(void);   # process's "effective" group ID
 
 int getgroups(int size, gid_t list[])   # process's extra group IDs
@@ -67,9 +67,21 @@ chmod o-rwx, u=rx foo
 
 **POSIX ACL Syntax**
 - can specify multiple users and multiple groups
-<div style="text-align: center;">
-  <img src="{{ '/images/Screenshot 2024-09-09 at 11.05.14 AM.png' | relative_url}}" alt="Screenshot" width="500">
-</div>
+- users take precedence over group entries
+
+```shell
+# group students have read+execute permissions
+group:students:r-x
+
+# group faculty has read+write+execute permissions
+group:faculty:rwx
+
+# user mst3k has read+write+execute permissions
+user:mst3k:rwx
+
+# user tj1a has no permissions
+user:tj1a:---
+```
 
 **POSIX ACLs on command line**
 

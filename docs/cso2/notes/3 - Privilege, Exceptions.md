@@ -24,15 +24,17 @@ nav_order: 3
 - system boots
 - OS switches to user mode to run program code
 
-**Controlled Entry to Kernel Mode**\
-	1. user program needs OS, invokes a system call
-	2. user program is interrupted, control given to OS
-	3. OS runs in kernel mode at specified location (location can’t be changed without privileged instruction)
-	4. OS figures out what operation the program wants and ensures it is valid
-	5. complete operation and restore user saved state
+**Controlled Entry to Kernel Mode**
+1. user program needs OS, invokes a system call
+2. user program is interrupted, control given to OS
+3. OS runs in kernel mode at specified location (location can’t be changed without privileged instruction)
+4. OS figures out what operation the program wants and ensures it is valid
+5. complete operation and restore user saved state
+
 <div style="text-align: center;">
   <img src="{{ '/images/Screenshot 2024-09-09 at 2.19.52 PM.png' | relative_url}}" alt="Screenshot" width="500">
 </div>
+
 ## Linux x86-64 System Calls
 - before `syscall`:
 	- `%rax` : system call number
@@ -70,6 +72,7 @@ nav_order: 3
 <div style="text-align: center;">
   <img src="{{ '/images/Screenshot 2024-09-09 at 2.44.39 PM.png' | relative_url}}" alt="Screenshot" width="500">
 </div>
+
 ## Memory Protection
 **Address Space**
 - programs have the illusion of their own memory → “virtual memory”
@@ -86,6 +89,7 @@ nav_order: 3
 </div>
 - Program A will always have the expected result
 - Program B might crash because the OS may not map program B addresses
+
 ## Exceptions
 - hardware calls OS specified routine
 	1. switch to kernel mode
@@ -116,6 +120,7 @@ nav_order: 3
 <div style="text-align: center;">
   <img src="{{ '/images/Screenshot 2024-09-10 at 2.22.34 PM.png' | relative_url}}" alt="Screenshot" width="400">
 </div>
+
 ## Exception Patterns with I/O
 **Input**
 - *Case 1*: input available now
@@ -139,6 +144,7 @@ nav_order: 3
 	- handler: OS realizes device can’t accept output yet
 	- exception: device ready for output
 	- handler: OS send output
+
 ## Threads and Processes
 **Threads**
 - illusion of own processor
@@ -151,6 +157,7 @@ nav_order: 3
 	- thread = illusions of own CPU
 	- process could have multiple threads with independent registers
 	- address space = illusion of own memory
+
 ## Switching Programs
 **Context Switching**: OS switches to another thread
 1. OS starts running (some sort of exception)
@@ -159,7 +166,14 @@ nav_order: 3
 <div style="text-align: center;">
   <img src="{{ '/images/Screenshot 2024-09-10 at 2.32.56 PM.png' | relative_url}}" alt="Screenshot">
 </div>
+
 ## Exceptions vs Context Switch
-<div style="text-align: center;">
-  <img src="{{ '/images/Screenshot 2024-09-10 at 2.59.40 PM.png' | relative_url}}" alt="Screenshot">
-</div>
+| Case | Exception? | Context Switch? |
+| ------------------------------------------------- | -------------------------------------------------------------------------------- | ----------------------------------- |
+| Program calls a function in the standard library. | No, standard library functions usually don’t make syscalls.                      | No                                  |
+| Program writes a file to disk.                    | Yes, kernel mode only operation.                                                 | No                                  |
+| Program A goes to sleep, letting program B run.   | Yes, kernel mode required to changes address space to access program B’s memory. | Yes, switching between 2 processes. |
+| Program exits.                                    | Yes, requires switching to another program as in previous case.                  | Yes, switching between 2 processes. |
+| Program returns from one function to another.     | No, done entirely in user mode.                                                  | No                                  |
+| Program pops a value from the stack.              | No, done entirely in user mode.                                                  | No                                  |
+
