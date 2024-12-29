@@ -11,6 +11,6 @@ nav_enabled: true
 color_scheme: dark
 
 callouts:
-  warning:
+  note:
     title: Note
     color: purple
