@@ -6,11 +6,10 @@ nav_order: 1
 # UVA CS Foundation Courses Notes
 
 {: .note }
-> Notes by Amelia Chen UVA BACS '27 :>
->
-> Inspired by the GOAT Daniel Graham
->
-> Notes may be incomplete or incorrect
+> - Notes by Amelia Chen, UVA BACS '27.
+> - Inspired by the GOAT Daniel Graham.
+> - Notes may be incomplete or incorrect.
+> - Happy studying!!! :D
 
 ## Course History:
 ### Fall 2023
