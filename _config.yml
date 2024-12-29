@@ -9,3 +9,8 @@ baseurl: "/uva-cs-notes"
 nav_enabled: true
 
 color_scheme: dark
+
+callouts:
+  warning:
+    title: Note
+    color: purple
