@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Readings
-nav_order: 3
+parent: CS 3130 (CSO2)
+nav_order: 2
 ---
 # Readings
