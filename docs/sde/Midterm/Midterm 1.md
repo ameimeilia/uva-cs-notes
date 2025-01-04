@@ -5,48 +5,61 @@ parent: Midterm Notes
 nav_order: 11
 ---
 # Software Engineering
+
 ## Ad hoc development
 - ad hoc development is a one time solution that is fundamentally different from building systematic solutions
+
 ## Software complexity
 - accidental complexity emerges due to circumstance
 - essential complexity is intrinsic to developing software
 - the “hard part” of writing software is the specification, design, and testing of the conceptual construct
+
 ## Software Quality
 - external quality: from the stakeholder perspective
 	- functionality, reliability, usability, efficiency, portability
 - internal quality: from the developer perspective
 	- analyzability, changeability, stability, reusability, testability
+
 # Java
+
 ## Compiling vs. Interpreting
 - high level source code is compiled into an byte-code executable for the computer to run
 - interpreting: compiling and running is done at the same time
 - interpreted languages are less efficient than compiled languages
+
 ## .java, .class, and .jar files
 - `.java`: Java code file
 - `.class`: produced after compiling
 - `.jar`: contains several files that can be run as a single Java class
+
 ## Basic java command line arguments
 - `java`: runs a program
 - `java -jar`: runs a jar file
 - `javac`: compiles java file
+
 ## How Java works
 - JDK: compiles `.java` files and creates `.class` files, which are portable between environments
 - JRE: runs `.class` files
 - JVM: contained in the JRE, handles direct interactions with hardware, interprets `.class` byte code
 - JIT: compiles JVM byte-code into native machine code
+
 ## Benefits of this approach
 - compiling with JDK allows sharing of executables across different OS that can be run with JRE/JVM
 - JIT allows for optimization
 - overall convenience, distributability, portability, and performance
+
 ## Packages
 - Java code is organized into packages of related or interacting classes
 - packages must be imported, ex. `import java.util.*`
 - to create a package: `package [name of package]` at top of file
+
 ## Command Line Arguments
 - command line arguments are stored in `String[] args`
 - `List<String> argsList = Arrays.toList(args);`
 - optional arguments are preceded with 1 or 2 hyphens, i.e. `-arg`, `--arg`
+
 # Software construction
+
 ## git version control
 - **Distributed repository**: every workstation has a local copy of the repository
 ![[Screenshot 2024-09-05 at 8.53.46 PM.png | center | 350]]
@@ -62,6 +75,7 @@ nav_order: 11
 - Using **branches** effectively
 	1. One branch per feature
 	2. Merge effectively and safely: merge main into feature, resolve conflicts, then merge feature into main
+
 ## Gradle
 - **Build Tool**: simplifies the process of using libraries and building `.jar` files
 - **Dependency management**: add external libraries to the dependencies section of the `build.gradle` file
@@ -69,9 +83,12 @@ nav_order: 11
 - **`test`**: defines how to run tests
 - **`fat-jar`**: contains code and all dependencies
 - **`gradlew`**: installs correct Gradle for that project
+
 # Testing
+
 ## Primary purpose of testing
 - to find defects
+
 ## Test Scenarios
 - **Input**
 	- Parameters: check that inputs to functions are valid
@@ -83,6 +100,7 @@ nav_order: 11
 - **Design Test Scenarios for both Functions and Objects Methods**
 	- **Functions**: test for input parameters, return values, and independent state
 	- **Object Methods**: test for input/output as well as the object state before/after the function
+
 ## Writing JUnit tests
 - `@Test`: marks a method as a test case
 - `@BeforeEach`: sets up common objects/states before running tests
@@ -123,15 +141,19 @@ nav_order: 11
 	1. write a failing test
 	2. write just enough code so that the test passes
 	3. refactor the code and repeat
+
 # Defensive Programming
+
 ## Throwing Exceptions
 - use exceptions to enforce **pre** and **post-conditions**
 - avoid using exceptions for **control-flow**
+
 ## Handling Exceptions
 - only handle exceptions when you can **meaningfully respond**
 - Java syntactically forces you to handle checked exceptions
 - handle checked exceptions in one place
 - throw checked exceptions as unchecked exceptions
+
 ## Making your own Exceptions
 - usually use `RuntimeException` class
 
@@ -146,21 +168,26 @@ public class InsufficientFundsException extends RuntimeException {
 ## Protecting Class Usage
 - **Defensive programming** ensures your code handles unexpected input and states gracefully, making it more robust and error-resistant.
 - Prevent **invalid states** by checking inputs (e.g., throwing an exception if invalid data is passed).
+
 ## AssertionError
 - **`assert`**: used in tests to check conditions, `assert [boolean_statement]
 - `-ea`: add to **VM arguments** to enable assertions
+
 # Code Quality
+
 ## Analyzability
 - ability to understand code in order to maintain, update, and reuse it
 - **Readability**: ability to interpret the syntax of the software
 - **Understandability**: ability to understand the high-level meaning of the code
 - Readability is a necessary but insufficient condition for understandability
+
 ## Code Smells
 1. **Long functions**: difficult to read, maintain, and reuse; functions should only do one thing
 2. **Long parameter list**: avoid functions with 3+ arguments
 3. **Boolean parameters**: lead to unclear intent; write 2 distinct functions instead
 4. **Primitive Obsession**: class with too many primitive data fields; write more focused classes
 5. **Message Chains**: chains of method calls are hard to read and maintain
+
 ## Refactoring techniques
 1.  **Renaming Identifiers**: update variables and function names to reflect their purpose
 	- code shouldn’t require pausing to understand simple ideas
@@ -172,16 +199,21 @@ public class InsufficientFundsException extends RuntimeException {
 7. **Extract method**: ensure methods only have one purpose
 8. **Extract class**: break up functionality into classes that handle different, specific behavior
 9. **Preserve Whole Object**: passing objects avoids primitive obsession
+
 ## DRY vs. WET
 - **DRY**: don’t repeat yourself
 - **WET**: write everything twice
+
 ## Code Comments
 - **Comments**: explains why a specific line of code was written a particular way, useful for resolving bugs; short-term
 - **Documentation**: explains high-level flow of the code, overview, and guidelines; long-term
+
 ## Technical Debt
 - delaying fixing code will make the problem harder to fix in the future
 - refactor early and often to reduce future maintenance times
+
 # Functional Programming
+
 ## Lambda functions in Java
 - unnamed function that is created when needed at runtime, usually passed as arguments to functions
 - implements functional interfaces
@@ -349,6 +381,7 @@ int totalPopulation = stateList.stream()
 
 # Software Design:
 - good software design slows software entropy and reduces the overall effort required to make a software change
+
 ## Design Concepts
 - **Modularity**: breaking big problems into smaller, manageable parts
 	- **Single responsibility principle**: one purpose per module
@@ -356,6 +389,7 @@ int totalPopulation = stateList.stream()
 - **Abstraction**: hide unnecessary details, keep implementation details hidden behind the interface
 	- changes to implementation should not affect other parts of the system if the interface remains unchanged
 - **Information Hiding**: enforce abstraction by limiting what is exposed to users of a module, prevents clients from directly accessing internal data
+
 ## Cohesion vs. coupling
 - **Highly Cohesive**: module is focused on a specific purpose, parts are interdependent and logically related; high intra-dependency
 - **Loosely Coupled**: interaction between multiple modules is low; low-interdependency
@@ -373,6 +407,7 @@ int totalPopulation = stateList.stream()
 	3. **Control Coupling**: one module passes control information (like booleans or enums)
 	4. **Stamp Coupling**: module passes a large data structure, but only part of it is used.
 	5. **Data Coupling**: Pass only the necessary data, and return only the required result.
+
 ## Class relationships 
 - **Dependency**: occurs when one class uses methods or functions from another
 	- arrow points to class being used
@@ -394,6 +429,7 @@ int totalPopulation = stateList.stream()
 - **"Prefer Composition/Aggregation over Inheritance"**: loose coupling, re-use code when necessary, fewer hierarchies
 - **Inheritance Flaws**: increased coupling, harder to make changes as code evolves
 - **Single Responsibility Principle**: A class or module should have only one reason to change. This ensures that each part of the software is responsible for a single piece of functionality.
+
 # Polymorphism
 **Benefits of Polymorphism**:
 - **Extensibility**: You can introduce new subclasses without altering existing code that uses parent types.

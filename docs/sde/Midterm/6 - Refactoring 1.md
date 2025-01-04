@@ -5,15 +5,18 @@ parent: Midterm Notes
 nav_order: 6
 ---
 # Defensive Programming
+
 ## Understanding Defensiveness
 - Anticipates user errors (e.g., wrong input files) and handles them gracefully.
 - **User errors**: Not the programmer’s fault but need handling (e.g., missing arguments, invalid files).
 - Users should never see programmer errors (e.g., NullPointerException).
 - Inform users when their error occurs with clear messages.
+
 ## Client Class
 - **Client class**: Any class or user interacting with our code.
 - Ensure client uses class correctly, not allowing erroneous states.
 - Notify clients when they use the class incorrectly.
+
 ### Example: `BankAccount`
 
 ``` Java
@@ -110,11 +113,13 @@ public class InsufficientFundsException extends RuntimeException {
 ### Rollback and Throw
 - If an error is detected after the operation, rollback changes before throwing an exception.
 - Ensures no erroneous states occur even when post-conditions fail.
+
 ## assert keyword
 - Used during development to check conditions.
 - Syntax: `assert [boolean_statement]`
 - If the statement is `false`, an **`AssertionError`** is thrown.
 - **AssertionError** is not an exception and cannot be caught with `try-catch`.
+
 ### Example:
 
 ```Java
@@ -128,7 +133,9 @@ public void withdraw(double amount) {
 - To enable assertions, add `-ea` to the **VM arguments** in the run configurations window.
 - **Do not rely on `assert`** statements in deployed software.
 - Replace `assert` statements with **exceptions** for production code, especially in libraries for client use.
+
 # Exceptions
+
 ## When to throw exceptions
 - Use exceptions to enforce **pre-conditions** and **post-conditions**.
 
@@ -151,6 +158,7 @@ public void withdraw(double amount) {
 ## When not to throw exceptions
 - Avoid using exceptions for **control-flow** (e.g., using try-catch for index validation).
 - Instead, use simple logical checks (e.g., validating list indices with a boolean statement).
+
 ## When to use try-catch
 Use try-catch when:
 - You can **meaningfully handle** the exception.
@@ -158,6 +166,7 @@ Use try-catch when:
 - In general, when dealing with live user input, you never want to allow the program to crash.
 
 - never catch exception you can’t handle meaningfully
+
 ### Checked Exceptions
 - **Checked exceptions** (e.g., `IOException`, `FileNotFoundException`) can be difficult to handle.
 - **Encapsulate file I/O** and exception handling in the method

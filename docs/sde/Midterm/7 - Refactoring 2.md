@@ -12,6 +12,7 @@ Extract Method: [https://sde-coursepack.github.io/modules/refactoring/Extract-Me
 - **Understandability** is the part of analyzability that relates to understand the semantics, or the **high-level meaning** of the code, and why the code exists.
 - Using good code style and human-readable identifier names improves _readability_
 - Using _effective_ identifier names, avoiding “magic values” that require additional context to explain, and good class design can improve understandability.
+
 # “Good Code”
 - Varies across languages (Java vs. Python/C++) due to style and syntax differences.
 - Goes beyond functionality; emphasizes understandability, maintainability, and scalability.
@@ -42,6 +43,7 @@ Extract Method: [https://sde-coursepack.github.io/modules/refactoring/Extract-Me
 - Programming is a powerful tool; aspire to be the best developer you can be.
 - Clean, understandable code reflects professionalism and care for your craft.
 - Feeling pride in your work and code quality benefits both you and others who may use your code.
+
 # Code Smells
 **Long Methods**
 - Overly long methods are difficult to read, maintain, and reuse.
@@ -76,8 +78,10 @@ Extract Method: [https://sde-coursepack.github.io/modules/refactoring/Extract-Me
 **Message Chains**
 - Long, complex chains of method calls are hard to read and maintain.
 - Solution: Break the chain into smaller, focused methods. This improves readability and makes code easier to test and maintain.
+
 # Refactoring
 - Refactoring improves the **internal** structure of code without changing its external behavior. It enhances design, analyzability, testability, and maintainability.
+
 ## Testing and Refactoring
 - Regression tests are critical to ensure that external behavior remains unchanged.
 - Tests act as scaffolding for refactoring, ensuring that internal improvements don’t break functionality.
@@ -166,6 +170,7 @@ use of function:
 - **Preserve Whole Object**: Pass objects (like `Coordinate`) instead of individual fields to avoid primitive obsession and improve code readability.
 - **Getters for mutables return copies**: When returning mutable objects, return a copy using a constructor of `clone()` to prevent accidental modification.
 - **Making copies of Collections**: Return a copy of a mutable collection (e.g., `ArrayList`) to avoid unintended modifications.
+
 ### Extracting Methods
 - **Purpose of Extracting Methods**:
     - Break large methods into smaller ones for better clarity and functionality.
