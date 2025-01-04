@@ -67,7 +67,7 @@ nav_order: 9
 
 *example*
 
-```C
+```c
 Lock(account_lock);
 balance += ...;
 Unlock(account_lock);
@@ -76,7 +76,7 @@ Unlock(account_lock);
 ## `pthread mutex`
 - rule: unlock from same thread you lock in
 
-```C
+```c
 #include <pthread.h>
 
 pthread_mutex_t account_lock;
@@ -97,7 +97,7 @@ pthread_mutex_unlock(&account_lock);
 - Thread 1: MoveFile(A, B, “foo”)
 - Thread 2: MoveFile(B, A, “bar”)
 
-```C
+```c
 struct Dir { 
 	mutex_t lock; HashMap entries; 
 };
@@ -155,7 +155,7 @@ void MoveFile(Dir *from_dir, Dir *to_dir, string filename) {
 
 **Acquiring Locks in Consistent Order**
 
-```C
+```c
 MoveFile(Dir* from_dir, Dir* to_dir, string filename) {
 	if (from_dir−>path < to_dir−>path) { 
 		lock(&from_dir−>lock); 
@@ -171,7 +171,7 @@ MoveFile(Dir* from_dir, Dir* to_dir, string filename) {
 ## Barriers
 - wait for all computations to finish
 
-```C
+```c
 barrier.Initialize(NumberOfThreads)
 barrier.Wait()    // return after all threads have waited
 ```
@@ -188,7 +188,7 @@ barrier.Wait()    // return after all threads have waited
 
 **`pthread` barriers**
 
-```C
+```c
 pthread_barrier_t barrier;
 pthread_barrier_init(
 	&barrier,
@@ -251,7 +251,7 @@ pthread_barrier_wait(&barrier);
 
 **Why Use a `while` loop?**
 
-```C
+```c
 while (!finished) {
 	pthread_cond_Wait(&finished_cv, &lock);
 }
@@ -300,7 +300,7 @@ while (!finished) {
 
 ## Monitor Pattern
 
-```C
+```c
 pthread_mutex_t mutex;
 pthread_cond_t cv;
 pthread_mutex_init(&mutex, NULL);
@@ -357,7 +357,7 @@ pthread_mutex_destroy(&mutex);
 
 *example - reserving books*
 
-```C
+```c
 Semaphore free_copies = Semaphore(3)
 void ReserveBook() {
 	// wait for copy to be free
@@ -402,7 +402,7 @@ void ReturnBook() {
 	- something higher-level handles locking
 	- library/database/etc. makes “transaction” happen all at once
 
-```C
+```c
 BeginTransaction();
 int FromOldBalance = GetBalance(FromAccount);
 int ToOldBalance = GetBalance(ToAccount); 

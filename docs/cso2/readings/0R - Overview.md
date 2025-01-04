@@ -18,7 +18,7 @@ nav_order: 1
 - **virtual memory**: tools that provide address-space separation between concurrent processes
 
 *example* - where `translation` is an **address translation** data structure changed by the OS when changing processes
-```C
+```c
 movq 20(%eax), %ebx
 # written in C as
 `ebx = memory[20 + eax]`

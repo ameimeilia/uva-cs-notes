@@ -203,7 +203,7 @@ rdx <- address-of(memory[rbx + rcx])
   <img src="{{ '/images/Screen Shot 2024-03-26 at 10.05.33 AM.png' | relative_url }}" alt="Screenshot" width="150">
 </div>
 
-```C
+```c
 int x = 3;
 int number_of_bytes = sizeof(x);    // sizeof(x) returns 4
 ```
@@ -273,7 +273,7 @@ int number_of_bytes = sizeof(x);    // sizeof(x) returns 4
 **Null Pointer**
 - pointer that does not point to any memory location
 
-```C
+```c
 #include<stdio.h>
 #define NULL 0
 
@@ -288,7 +288,7 @@ int main)(){
 - generic pointer type that can point to any data type
 - can’t be dereferenced, need to cast
 
-```C
+```c
 int a = 7;
 char x = 'y';
 
@@ -306,7 +306,7 @@ char q = *((char*)p);
 ### Arrays
 **Example Implementation**
 
-```C
+```c
 // declaration and initialization
 // a slot (4-bytes wide for int) is allocated on the stack for each element
 // x is the location in memory that holds the address of the first element
@@ -334,7 +334,7 @@ int totalNumberOfBytes = sizeof(x);    // = 16 (4 elements * 4 bytes)
 **Array Nuances**
 - arrays are not simply pointers, they are of type `int[n]`, meaning they cannot be assigned
 
-```C
+```c
 int x[4] = {1,2,3,4};
 int y[5] = {1,2,3,4,5};
 int *p;
@@ -364,7 +364,7 @@ x = p;    // not allowed, array is not assignable
 ### Strings
 **Char Array**
 
-```C
+```c
 // the string is stored in the code section, so it is not writable
 // message is a pointer -> message and &message are NOT the same
 char *message = "hello";
@@ -377,7 +377,7 @@ char message[6] = {'h', 'e', 'l', 'l', 'o', '\0'};
 
 **String Helper Functions**
 
-```C
+```c
 // size_t is a flexible type that stores the int size of the pointer (32 or 64)
 // size_t is unsigned, ssize_t is signed
 // const keyword defines immutable variables
@@ -397,7 +397,7 @@ size_t strlen(const char *str)
 
 **String Array Access**
 
-```C
+```c
 // accesses the letter at index 2 of the word at index 1
 strings[1][2] <-> (*(strings + 1))[2] <-> *((*(strings + 1)) + 2)
 
@@ -411,7 +411,7 @@ x[1][2] <-> (*(x + 1))[2] <-> *((*(x + 1)) + 2)
 - the first element in the `argv` array is the name of the program itself
 - when you call `./a.out Hello` it will print `a.out`
 
-```C
+```c
 int main(int argc, char **argv){
 	if (argc > 0){
 		printf("argument was %s", *argv);
@@ -421,7 +421,7 @@ int main(int argc, char **argv){
 
 - to print `Hello`:
 
-```C
+```c
 int main(int argc, char **argv){
 	if (argc > 0){
 		printf("argument was %s", *(argv + 1));    // or argv[1]
@@ -436,7 +436,7 @@ int main(int argc, char **argv){
 
 **`typedef` Example**
 
-```C
+```c
 typedef char* string;
 
 string name = "Daniel";    // improves readability!
@@ -450,7 +450,7 @@ printf("%s\n, name");
 
 **`struct` Example**
 
-```C
+```c
 struct student {    // the struct name (in this case "student") is optional
 	int year;    // members of the struct...
 	float grade;
@@ -464,7 +464,7 @@ daniel.graded = 77.7;
 
 **Combining `typedef` and `struct`**
 
-```C
+```c
 typedef struct student {
 	int year;
 	float grade;
@@ -482,7 +482,7 @@ typedef struct {
 - `(*pointer).member` can be written as `pointer->member`
 - more flexibility than dot notation
 
-```C
+```c
 typedef struct {
 	char name[50];
 	float grade;
@@ -506,7 +506,7 @@ printf("grade %0.2f", grade);
 
 **union**
 
-```C
+```c
 int main(){
 	union {       // similar to structs but
 		int x;    // x and c both access the same space in memory
@@ -527,7 +527,7 @@ int main(){
 
 **`malloc`** (memory allocation)
 
-```C
+```c
 // allocates a block of a specified size
 // args: # of bytes to allocate
 void* malloc(size_t size);
@@ -542,7 +542,7 @@ int *a = (int *)malloc(sizeof(int) * 8);
 
 **`calloc`** (contiguous allocation)
 
-```C
+```c
 // allocates a block of memory for an array of elements
 // args: # of elements and the size of each element
 // sets memory to 0
@@ -554,7 +554,7 @@ void* calloc(size_t nmemb, size_t size);
 
 **`realloc`** (reallocation)
 
-```C
+```c
 // changes the size of the previously allocated memory block
 // args: pointer to the memory to resize, new size in bytes
 // memory in newly reserved space is not set
@@ -566,7 +566,7 @@ void* realloc(void *ptr, size_t size);
 
 **`free`**
 
-```C
+```c
 // disassociates a pointer from a region of memory
 // dangerous because the disassociated pointer still holds its value
 void free(void *ptr);

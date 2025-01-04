@@ -15,7 +15,7 @@ nav_order: 7
 
 *example - locality*
 
-```C
+```c
 double computeMean(int length, double *values) {
 	double total = 0.0;
 	for (int i = 0; i< length; i++) {
@@ -150,7 +150,7 @@ double computeMean(int length, double *values) {
 ## Cache Accesses and C Code
 *exercise - what data cache accesses does this function do?*
 
-```C
+```c
 int scaleFactor;
 
 int scaleByFactor(int value) {
@@ -180,7 +180,7 @@ scaleByFactor:
 
 ## Exercise: C and Cache Misses
 
-```C
+```c
 int array[4];
 ...
 int even_sum = 0, odd_sum = 0;
@@ -210,7 +210,7 @@ odd_sum += array[3];
 
 ## Exercises: C and Cache Misses
 
-```C
+```c
 int array[4];
 ...
 int even_sum = 0, odd_sum = 0;
@@ -227,7 +227,7 @@ odd_sum += array[3];
   <img src="{{ '/images/Screenshot 2024-10-14 at 9.25.26 PM.png' | relative_url}}" alt="Screenshot">
 </div>
 
-```C
+```c
 int array[8];
 ...
 int even_sum = 0, odd_sum = 0;
@@ -249,7 +249,7 @@ odd_sum += array[7];
 - observation: what happens in set 0 doesn’t affect set 1
 - when evaluating set 0 accesses, can ignore non-set 0 accesses/content
 
-```C
+```c
 int array[8];
 ...
 int even_sum = 0, odd_sum = 0;
@@ -269,7 +269,7 @@ odd_sum += array[7];
   <img src="{{ '/images/Screenshot 2024-10-14 at 9.34.06 PM.png' | relative_url}}" alt="Screenshot">
 </div>
 
-```C
+```c
 int array[1024];
 ...
 int even_sum = 0, odd_sum = 0;
@@ -288,7 +288,7 @@ odd_sum += array[513]; // miss
 
 ## Misses with Skipping
 
-```C
+```c
 int array1[512]; int array2[512];
 ...
 for (int i = 0; i < 512; i += 1){
@@ -322,7 +322,7 @@ for (int i = 0; i < 512; i += 1){
 
 ## Exercise: C and Cache Misses (Assoc.)
 
-```C
+```c
 int array[1024];
 ...
 int even_sum = 0, odd_sum = 0;
@@ -339,7 +339,7 @@ odd_sum += array[513]; // hit
 - observation: `array[0]`, `array[256]`, `array[512]`, `array[768]` are in the same set
 - how many data cache misses on a 2KB 2-way set associative cache with 16B blocks?
 
-```C
+```c
 int array[1024];
 ...
 int even_sum = 0, odd_sum = 0;

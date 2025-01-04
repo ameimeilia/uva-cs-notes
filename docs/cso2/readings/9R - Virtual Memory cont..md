@@ -34,7 +34,7 @@ struct segment_node {
 - **Fixed-depth**: All data is stored the same number of steps from the root. Leaf nodes contain data, while internal nodes hold pointers.
 
 *example - tree with arity 16, 3 intermediate levels*
-```C
+```c
 #define WIDTH 16
 
 struct leaf {
@@ -58,7 +58,7 @@ struct height3 *root = /* ... */
 
 - The tree can be accessed like an array using bit masks
 *example - function to access data*
-```C
+```c
 PAYLOAD arr(struct height3 *root, unsigned short index) {
     struct height2 *child1 = root  [(index>>12)&(WIDTH-1)];
     struct height1 *child2 = child1[(index>>8)&(WIDTH-1)];
@@ -70,7 +70,7 @@ PAYLOAD arr(struct height3 *root, unsigned short index) {
 **Space Efficiency**: Saves memory when most indices are unused by omitting entire subtrees.
 - Uses null checks to avoid allocating unused subtrees.
 - More memory-efficient but slower due to multiple checks and memory accesses.
-```C
+```c
 PAYLOAD *arr(struct height3 *root, unsigned short index) {
     if (!root) return NULL;
     struct height2 *child1 = root  [(index>>12)&(WIDTH-1)];
@@ -105,7 +105,7 @@ PAYLOAD *arr(struct height3 *root, unsigned short index) {
     - 2MB pages are used for data but not for page table nodes, reducing the depth of the page table for some paths.
 - **Address Translation Process**
 	- The address translation process involves splitting the virtual address into 9-bit segments and walking through the page table levels:
-    ```C
+    ```c
     size_t vpn[4] = split_bits(va>>12, 9);
     size_t ppn = PTBR;
     for(int i=0; i<4; i+=1) {
@@ -120,7 +120,7 @@ PAYLOAD *arr(struct height3 *root, unsigned short index) {
 
 - **Page Fault Handling**
 	- When a page fault occurs, the OS steps in to handle it:
-```C
+```c
 handle_page_fault(size_t va, int access_type) {
     int flags = permitted_actions(va, segment_list);
     if ((access_type & flags) != access_type)

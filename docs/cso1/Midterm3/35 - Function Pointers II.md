@@ -8,7 +8,7 @@ nav_order: 8
 ## Function Pointers cont.
 **Functions that Return Function Pointers**
 
-```C
+```c
 float div(int x, int y){
 	return ((float)x)/y;
 }
@@ -20,7 +20,7 @@ float (*return_func())(int, int) {
 
 **TypeDef with Function Pointers**
 
-```C
+```c
 typedef float (*function_type)(int, int);
 
 function_type returnDivider(){
@@ -30,7 +30,7 @@ function_type returnDivider(){
 
 **Structs with Function Pointers**
 
-```C
+```c
 #include <stdiol.h>
 void myfunction(); //Function prototype
 
@@ -54,7 +54,7 @@ int main(){
 - user-defined data type that consists of a set of named integer constants
 - used to define a list of named values that represent a finite set of possible values for a variable
 
-```C
+```c
 enum Name{
 	Constant_1,
 	Constant_2,
@@ -64,7 +64,7 @@ enum Name{
 
  **Examples**
 
-```C
+```c
 #include <stdio.h>
 
 // the first element in the array is implicitly assigned 0
@@ -83,7 +83,7 @@ int main() {
 } 
 ```
 
-```C
+```c
 enum Direction {
 	Up,
 	Down,
@@ -112,7 +112,7 @@ void move(enum Direction dir) {    // so readable!!!
 ## Volatile and Extern
 **Volatile**
 
-```C 
+```c 
 volatile int flag = 0;    // variable can get changed in another location
 
 void interrupt_handler() {
@@ -132,7 +132,7 @@ int main() {
 
 **Extern**
 
-```C
+```c
 // In some other file, let's say 'file1.c'
 int count = 5;
 
@@ -150,7 +150,7 @@ int main() {
 - used to specify the width ≤ to that of a type
 - limitations: can have pointers due to alignment/padding
 
-```C
+```c
 // data_type: int, signed int, or unsigned int.
 // member_name: the name of the bit field
 // width_of_bit-field: The number of bits in the bit field
@@ -161,7 +161,7 @@ struct {
 
 **Example**
 
-```C
+```c
 // Space optimized representation of the date
 
 struct date {

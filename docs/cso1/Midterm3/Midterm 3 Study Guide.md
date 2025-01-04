@@ -8,7 +8,7 @@ nav_order: 11
 ## Undefined Behavior
 **Examples of Undefined Behavior**
 
-```C
+```c
 int main(){
 	// behavior changes based on compiler
 	
@@ -105,7 +105,7 @@ int main(){
 </div>
 - `<fcntl.h>`: file control header file
 
-```C
+```c
 #include <stdio.h>
 #include <unistd.h>
 
@@ -169,7 +169,7 @@ ex. `-rw-r–r– (6 4 4)`
 3. `syscall` instruction switches into kernel mode and invokes the system call based on the value in `%rax`
  4. the return value is placed in `%rax`, indicates success or error code
 
-```C
+```c
 .global _start
 .text
 _start:
@@ -191,7 +191,7 @@ message: ;                     // Label for the message
 
 **`memcpy` and `memmove`**
 
-```C
+```c
 void *memcpy(void *dest, const void *src, size_t n);    // returns a pointer to dest
 
 // can use with overlapping dest and src memory
@@ -200,7 +200,7 @@ void *memmove(void *dest, const void *src, size_t n);
 
 **Generic Swap**
 
-```C
+```c
 void swap(void *data1ptr, void *data2ptr, size_t nbytes) {
 	// store a copy of data1 in temp storage
 	void *temp = malloc(nbytes);
@@ -218,7 +218,7 @@ void swap(void *data1ptr, void *data2ptr, size_t nbytes) {
 
 **`strsep`**
 
-```C
+```c
 // stringp is a pointer to the string that we want to parse
 // delim is a string that contains multiple delimiters
 char *strsep(char **stringp, const char *delim);
@@ -228,7 +228,7 @@ char *strsep(char **stringp, const char *delim);
   <img src="{{ '/images/Screen Shot 2024-05-04 at 4.25.15 PM 1.png' | relative_url }}" alt="Screenshot">
 </div>
 
-```C
+```c
 #include <stdio.h>
 #include <string.h>
 
@@ -294,7 +294,7 @@ int main() {
 ## Function Pointers, Generic Sort
 **Function Pointers**
 
-```C
+```c
 #include <stdio.h>
 
 ##### GENERAL FORM #####
@@ -364,7 +364,7 @@ int main() {
 
 **Right-Left Rule**
 
-```C
+```c
 /*  * = pointer to, [] = array of, () = function returning
  *  1. "<variable or function> is..."
  *  2. go right until no symbols or )
@@ -381,12 +381,12 @@ int *(*func())();
 **Generic Sort**
 - `qsort()` function sorts an array with `nmemb` elements of size `size` where `base` points to the start of the array
 
-```C
+```c
 void qsort(void *base, size_t nmemb, size_t size,
 		   int(*compar)(const void*, const void *)); 
 ```
 
-```C
+```c
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -408,7 +408,7 @@ int main() {
 ## Enums, Volatile, Extern
 **Enums**
 
-```C
+```c
 // enums define a set of named integer constants
 // the first element in the array is implicitly assigned 0
 
@@ -439,7 +439,7 @@ void move(enum Direction dir) {    // so readable!!!
 
 **Volatile**
 
-```C 
+```c 
 volatile int flag = 0;    // variable can get changed in another location
 
 void interrupt_handler() {
@@ -459,7 +459,7 @@ int main() {
 
 **Extern**
 
-```C
+```c
 // In some other file, let's say 'file1.c'
 int count = 5;
 
@@ -475,7 +475,7 @@ int main() {
 
 **Bit Fields**
 
-```C
+```c
 // bit fields used to specify width of struct members
 struct date {
 	// d has value between 0 and 31, so 5 bits are sufficient
@@ -526,7 +526,7 @@ int main(){
 
 - if we read from the socket then an attacker can execute arbitrary code
 
-```C
+```c
 void vulnerable_function(int sockfd) {    // dangerous!!
 	char buffer[7];
 	fgets(s);

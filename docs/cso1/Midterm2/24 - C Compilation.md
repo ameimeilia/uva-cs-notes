@@ -77,7 +77,7 @@ nav_order: 9
 **sizeof Array**
 - return the total number of bytes in the array
 
-```C
+```c
 int x[4] = {1,2,3,4};
 int totalNumberOfBytes = sizeof(x);    //4*4 = 16
 
@@ -93,7 +93,7 @@ int totalNumberOfBytes = sizeof(x);    //4*1 = 4
 
 **Setting Values Using Pointers**
 
-```C
+```c
 int x[4] = {1,2,3,4};
 *x = 7;    // goes to the address x points to and sets it to 7
 ```
@@ -101,13 +101,13 @@ int x[4] = {1,2,3,4};
   <img src="{{ '/images/Screen Shot 2024-03-28 at 1.44.29 PM.png' | relative_url }}" alt="Screenshot" width="250">
 </div>
 
-```C
+```c
 *(x + 1) = 7;
 ```
 - in Assembly, `x + 1` would be represented as `0xDD + 4`
 - in pointer arithmetic, constants are treated as multiples of the size of the pointer type
 
-```C
+```c
 *x = *x + 1;
 ```
 - at the value x points to, set that equal to the value x points to + 1
@@ -123,7 +123,7 @@ int x[4] = {1,2,3,4};
 ## Array Nuances
 - arrays are not simply pointers, they are of type `int[n]`, meaning they cannot be assigned
 
-```C
+```c
 int x[4] = {1,2,3,4};
 int y[5] = {1,2,3,4,5};
 int *p;
@@ -145,7 +145,7 @@ x = p;    // not allowed, array is not assignable
 
 ## Char Array and Strings
 
-```C
+```c
 char message[6] = {'h', 'e', 'l', 'l', 'o', '\0'};    // declaring/instantiating
 
 char *message = "hello";    // assigning

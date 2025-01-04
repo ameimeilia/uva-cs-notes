@@ -7,7 +7,7 @@ nav_order: 12
 # Null, Void, Heap, and Free
 ## Null Pointer
 
-```C
+```c
 #include<stdio.h>
 #define NULL 0
 
@@ -22,7 +22,7 @@ int main)(){
 - pointer not associated with a data type
 - can’t be dereferenced, need to cast
 
-```C
+```c
 int a = 7;
 char x = 'y';
 
@@ -74,7 +74,7 @@ char q = *((char*)p);
 
 - to fix: set pointer to null once freed
 
-```C
+```c
 free(p);
 p = NULL;
 ```

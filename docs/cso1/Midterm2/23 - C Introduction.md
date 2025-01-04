@@ -26,7 +26,7 @@ nav_order: 8
   <img src="{{ '/images/Screen Shot 2024-03-26 at 10.05.33 AM.png' | relative_url }}" alt="Screenshot" width="150">
 </div>
 
-```C
+```c
 int x = 3;
 int number_of_bytes = sizeof(x);    // sizeof(x) returns 4
 ```

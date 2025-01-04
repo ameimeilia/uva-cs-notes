@@ -9,7 +9,7 @@ nav_order: 1
 
 **Examples**
 
-```C
+```c
 int main(){
 	// behavior changes based on compiler
 	
@@ -65,7 +65,7 @@ int main(){
 
 **Note on Memory**
 
-```C
+```c
 // OS doesn't always reserve memory until you write to it
 // volatile tells the compiler the variable may change at any time without code
 // don't asuume that values uninitialized are static/stable
@@ -80,7 +80,7 @@ assert(c1 == c2);
 
 **Promotion**
 
-```C
+```c
 void my_func(unsigned short a, unsigned short b){
 	unsigned int x;
 	x = (unsigned int)((int)a * (int)b);    // no adder for 16 bits, promote to int
@@ -95,7 +95,7 @@ my_func(656635, 65535);    // prints 4294836255 < 2147483648
 
 ## Padding in Structs
 
-```C
+```c
 struct name_tag{
 	int y;
 	char * x;    // this is the largest element size

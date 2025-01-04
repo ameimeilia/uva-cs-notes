@@ -73,7 +73,7 @@ nav_order: 5
 - **Async-signal-safe functions**: A list of functions guaranteed to behave correctly even if a signal handler interrupts them.
 
 *example*: signal override, custom signal handler. (`write()` is safe to use in signal handlers)
-``` C
+```c
 static void handler(int signum) {
     write(1, "Provide end-of-file to end program.\n", strlen("Provide end-of-file to end program.\n"));
 }
@@ -83,7 +83,7 @@ static void handler(int signum) {
 - **Blocking signals**: Prevents signals from being handled during critical sections of code, allowing for safe execution before processing the signal
 
 *example*: blocking `SIGINT` using `sigprocmask`
-```C
+```c
 sigset_t sigint_as_set;
 sigemptyset(&sigint_as_set);
 sigaddset(&sigint_as_set, SIGINT);

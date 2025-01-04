@@ -20,7 +20,7 @@ nav_order: 10
     - **Initialization**: `pthread_attr_init` to set up, `pthread_attr_destroy` to free resources afterward.
     - **Attributes to Set**: Priority, stack size, and detach state (joinable vs. detached).
 *example - skeleton to create a thread*
-```C
+```c
 pthread_attr_t attr;
 pthread_attr_init(&attr);
 pthread_t id;
@@ -54,7 +54,7 @@ Every created thread is either joinable or detached:
 ### Synchronization with pthreads
 #### Mutex
 - only allows one thread to hold the lock at a time, ensuring exclusive access
-```C
+```c
 pthread_mutex_t mutex;    // declare a mutex variable
 
 void *thread_function(void *) {
@@ -82,7 +82,7 @@ int main(int argc, const char *argv[]) {
 #### On Sharing Mutexes (and other synchronization objects)
 - shared mutex objects are modified directly using pointers
 - mutexes can be shared via global variables or passing pointers
-```C
+```c
 typedef struct {
     pthread_mutex_t *ptr_to_mutex;
     ...
@@ -113,7 +113,7 @@ int main(int argc, const char *argv[]) {
 #### Barrier
 - acts as a synchronization point, allowing threads to wait until all have reached a specific point
 - barrier objects must be shared between threads, like mutexes
-```C
+```c
 pthread_barrier_t barrier;
 
 void *thread_function(void *) {

@@ -91,7 +91,7 @@ if __name__ == '__main__':
 ## C Code
 **Imports**
 
-```C
+```c
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -105,7 +105,7 @@ if __name__ == '__main__':
 
 **File Descriptors**
 
-```C
+```c
 int main() {
 	int server_fd, client_fd;
 	struct sockaddr_in address;
@@ -114,20 +114,20 @@ int main() {
 
 **Create Socket**
 
-```C
+```c
 int socket(int domain, int type, int protocol);
 ```
 - `domain`: AF_INET (IPv4 address), AF_INET6 (IPv6 address), or AF_BLUETOOTH
 - `type`: TCP SOCK_STREAM (reliable) or UDP SOCK_DGRAM (unreliable)
 - `protocol`: most socket types only support a single protocol, normally set to 0
 
-```C
+```c
 server_fd = socket(AF_INET, SOCK_STREAM, 0);
 ```
 
 **Set Address**
 
-```C
+```c
 address.sin_family = AF_INET;
 address.sin_addr.s_addr = INADDR_ANY;
 address.sin_port = htons(PORT);
@@ -138,7 +138,7 @@ address.sin_port = htons(PORT);
 
 **Bind and Listen**
 
-```C
+```c
 bind(server_fd, (struct sockaddr *)&address, sizeof(address));
 listen(server_fd, 10);
 int addrlen = sizeof(address);
@@ -148,7 +148,7 @@ int addrlen = sizeof(address);
 
 **Serve the Page**
 
-```C
+```c
 while (1) {
 	// new_socket is a file descriptor (int)
 	new_socket = accept(server_fd, (struct sockaddr *)&address, (socklen_t*)&addrlen);
@@ -159,7 +159,7 @@ while (1) {
 
 **Close File Descriptors**
 
-```C
+```c
 	close(new_socket);
 }
 close(server_fd);

@@ -19,7 +19,7 @@ nav_order: 11
 
 ## Array Access
 
-```C
+```c
 strings[1][2] <-> (*(strings + 1))[2] <-> *((*(strings + 1)) + 2)
 
 OR
@@ -42,7 +42,7 @@ x[1][2] <-> (*(x + 1))[2] <-> *((*(x + 1)) + 2)
 
 **Example**
 
-```C
+```c
 typedef int dimension;
 
 dimension height = 3;
@@ -52,7 +52,7 @@ dimension area = width * height
 printf("%d\n", area);
 ```
 
-```C
+```c
 typedef char* string;
 
 string name = "Daniel";
@@ -65,7 +65,7 @@ printf("%s\n, name")
 
 **Format**
 
-```C
+```c
 struct struct_name {    //struct_name is optional
 	data_type member1;
 	data_type member2;
@@ -75,7 +75,7 @@ struct struct_name {    //struct_name is optional
 
 **Example**
 
-```C
+```c
 struct student {
 	int year;
 	float grade;
@@ -89,7 +89,7 @@ daniel.graded = 77.7;
 
 **Combining typedef and struct**
 
-```C
+```c
 typedef struct student {
 	int year;
 	float grade;
@@ -106,7 +106,7 @@ typedef struct {
 **Structs and Pointers**
 - `(*pointer).member` can be written as `pointer->member`
 
-```C
+```c
 typedef struct {
 	char name[50];
 	float grade;

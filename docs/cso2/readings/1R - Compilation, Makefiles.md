@@ -33,7 +33,7 @@ nav_order: 2
 #### 3.1 producing and using static libraries (on Unix-like systems)
 - static libraries are archives of object files produced with the `ar` command
 
-```C
+```c
 # after generating object files
 ar -rcs libfoo.a quux.o bar.o
 # creates library libfoo.a
@@ -50,7 +50,7 @@ clang -o exec main.o -lfoo
 #### 3.2 producing and using dynamic libraries (on Linux)
 - files used in a dynamic library need to be compiled specially using `-fPIC` so they can be loaded anywhere in memory
 
-```C
+```c
 # generate a libaray by linking with -shared
 clang -shared -o libfoo.so bar.o quux.o
 

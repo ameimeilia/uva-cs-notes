@@ -14,7 +14,7 @@ nav_order: 3
 - part of C standard library
 - manipulates file descriptors and provides additional control over open files
 
-```C
+```c
 #include <fcntl.h>
 #include <unistd.h>
 
@@ -41,18 +41,18 @@ int main() {
 
 **`fgets`**
 
-```C
+```c
 char *fgets(char *s, int size, FILE *stream);    // read from stdin
 ```
 
 **fwrite**
-```C
+```c
 size_t fwrite(const void *ptr, size_t size, nmemb_t nmemb, FILE *stream);
 ```
 
 **Example File Descriptor**
 
-```C
+```c
 #include <stdio.h>
 #include <unistd.h>
 

@@ -11,7 +11,7 @@ nav_order: 2
 
 ## scanf
 
-```C
+```c
 int scanf(const char *format, ...)
 // ... indiciates that the function accepts variable length arguments
 // char *: this contains the format specifiers
@@ -19,7 +19,7 @@ int scanf(const char *format, ...)
 
 **Example**
 
-```C
+```c
 int a;
 int b;
 
@@ -29,7 +29,7 @@ scanf("%d %d", &a, &b);
 
 ## Malloc Examples
 
-```C
+```c
 // use dynamically allocated memory on the stack to read in a file
 // vs. declaring variables on the stack: might exceed/take up unnecessary space
 int main(){
@@ -75,14 +75,14 @@ Allocators:
 ## Header Files
 - API that provides the method definition so we can use a library
 
-```C
+```c
 #include <filename.h>    // for files in system/default directory
 #include "filename.h"    // for files in the same directory as source file
 ```
 
 **Example**
 
-```C
+```c
 #ifndef EXAMPLE_HEADER_FILE
 #define EXAMPLE_HEADER_FILE
 
@@ -96,7 +96,7 @@ Allocators:
 ```
 ## FILE IO
 
-```C
+```c
 FILE *fopen(const char *filename, const chat *mode);
 ```
 
@@ -111,13 +111,13 @@ FILE *fopen(const char *filename, const chat *mode);
 
 **Closing Files**
 
-```C
+```c
 int fclose(FILE *fp);
 ```
 
 **Example**
 
-```C
+```c
 #include <stdio.h>
 #include <stdlib.h>
 

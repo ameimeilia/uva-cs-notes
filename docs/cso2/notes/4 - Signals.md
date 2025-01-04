@@ -33,7 +33,7 @@ nav_order: 4
 
 **Example Signal Program**
 
-```C
+```c
 void handle_sigint(int signum) { /* signum == SIGINT */
 	write(1, "Control-C pressed?!\n", sizeof("Control-C pressed?!\n"));
 }
@@ -93,7 +93,7 @@ kill -USR1 1234
 ## Signal Handler Unsafety
 *example*
 
-```C
+```c
 void foo() {
 	/* SIGINT might happen while foo() is running */
 	char *p = malloc(1024);

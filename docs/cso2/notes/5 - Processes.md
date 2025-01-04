@@ -107,7 +107,7 @@ essential operations:
 ## File Descriptors
 - fork copies open file list, exec preserves open files
 
-``` C
+```c
 // process table
 struct process_info {
 	... // pid, register files, page table, ptr, etc.
@@ -154,7 +154,7 @@ redirection: `./program >output.txt`
 
 ## open/dup/close/etc. and fd array
 
-```C
+```c
 struct process_info {
 	...
 	struct open_file_description *files[NUM];
@@ -203,7 +203,7 @@ struct process_info {
 
 *example - unshared seek pointers*
 
-```C
+```c
 // if "foo.txt" contains "AB"
 int fd1 = open("foo.txt", O_RDONLY);
 int fd2 = open("foo.txt", O_RDONLY);
@@ -216,7 +216,7 @@ read(fd2, &d, 1);
 
 *example - shared seek pointers*
 
-```C
+```c
 // if "foo.txt" contains "AB"
 int fd1 = open("foo.txt", O_RDONLY);
 dup2(fd, 100);
@@ -229,7 +229,7 @@ read(fd2, &d, 1);
 
 *example - shared seek pointers 2*
 
-```C
+```c
 // if "foo.txt" contains "AB"
 int fd1 = open("foo.txt", O_RDONLY);
 pid_t p = fork();

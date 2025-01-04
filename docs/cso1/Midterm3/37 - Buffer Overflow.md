@@ -7,7 +7,7 @@ nav_order: 10
 # Buffer Overflow
 ## Bytes and Padding
 
-```C
+```c
 #include <stdio.h>
 #include <stdint.h>
 
@@ -46,7 +46,7 @@ int main() {
 
 ## Data as Code
 
-```C
+```c
 #include <stdio.h>
 #include <stdint.h>
 
@@ -82,7 +82,7 @@ int main() {
 
 ## `gets` Function
 
-```C
+```c
 #include <stdio.h>
 
 void vulnerable_function() {
@@ -110,7 +110,7 @@ int main() {
 ## Socket and Buffer Overflows
 - to fix the vulnerabilities with the `gets()` function, read from a socket
 
-```C
+```c
 #include <stdio.h>
 
 void vulnerable_function(int sockfd) {
@@ -130,7 +130,7 @@ int main() {
 
 **Error Practice**
 
-```C
+```c
 int copy_something(char *buf, int len) {
 	char kbuf[800];
 

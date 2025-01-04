@@ -8,7 +8,7 @@ nav_order: 5
 ## ToyG Syntax
 - only supports integers
 
-```C
+```c
 x = 3;    // = is a valid token
 y = 4;    // in y <- 4, <- is an invalid token
 ```
@@ -45,7 +45,7 @@ y = 4;    // in y <- 4, <- is an invalid token
 
 ## Union Structure in C
 
-```C
+```c
 int main(){
 	union {       // similar to structs but
 		int x;    // x and c both access the same space in memory

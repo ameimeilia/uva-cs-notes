@@ -24,7 +24,7 @@ nav_order: 4
 
 **Example Implementation**
 
-```C
+```c
 .global _start
 .text
 _start:
@@ -51,13 +51,13 @@ message: ;                     // Label for the message
 - don’t use with overlapping regions as it will result in undefined behavior
 - returns a pointer to destination
 
-```C
+```c
 void *memcpy(void *dest, const void *src, size_t n);
 ```
 
 **`memcpy` Example**
 
-```C
+```c
 #include <stdio.h>
 #include <string.h>
 
@@ -76,13 +76,13 @@ int main() {
 **`memmov`e**
 - safe to use when the source and destination memory regions overlap
 
-```C
+```c
 void *memmove(void *dest, const void *src, size_t n);
 ```
 
 **`memmove` Example**
 
-```C
+```c
 #include <stdio.h>
 #include <string.h>
 
@@ -99,7 +99,7 @@ int main() {
 
 ## Generic Swap
 
-```C
+```c
 void swap(void *data1ptr, void *data2ptr, size_t nbytes) {
 	// store a copy o fdata1 in temp storage
 	void *temp = malloc(nbytes);
@@ -117,7 +117,7 @@ void swap(void *data1ptr, void *data2ptr, size_t nbytes) {
 
 ## `strsep`
 
-```C
+```c
 // stringp is a pointer to the string that we want to parse
 // delim is a string that contains multiple delimiters
 char *strsep(char **stringp, const char *delim);
@@ -127,7 +127,7 @@ char *strsep(char **stringp, const char *delim);
 </div>
 
 
-```C
+```c
 #include <stdio.h>
 #include <string.h>
 

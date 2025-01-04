@@ -56,7 +56,7 @@ int execve(const char *filename, char *const argv[], char *const envp[]);
 - The parent can **reap** the zombie process using **`waitpid`** to remove it from the process list and retrieve its exit status.
 
 *example - fork, waitpid, and retrieving the exit status*
-```C
+```c
 #include <sys/wait.h>
 #include <unistd.h>
 #include <stdio.h>
@@ -107,7 +107,7 @@ int main() {
 
 
 *example*
-```C
+```c
 #include <unistd.h>
 #include <stdio.h>
 

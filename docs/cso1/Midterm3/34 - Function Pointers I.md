@@ -11,7 +11,7 @@ nav_order: 7
 **Declaration and Initialization**
 - general form: `[return type] (*[pointer name])([parameters])`
 
-```C
+```c
 float div (int a, int b){
 	return a/b;
 }
@@ -30,7 +30,7 @@ int main(){
 
 **Passing a Function Pointer**
 
-```C
+```c
 #include <stdio.h>
 
 int add(int a, int b) {
@@ -52,13 +52,13 @@ int main() {
 ## Generic Sort
 - `qsort()` function sorts an array with `nmemb` elements of size `size` where `base` points to the start of the array
 
-```C
+```c
 void qsort(void *base, size_t nmemb, size_t size,
 		   int(*compar)(const void*, const void *)); 
 ```
 
 
-```C
+```c
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -91,7 +91,7 @@ int main() {
 
 **Examples**
 
-```C
+```c
 int *p[];    // "p is an array of pointers to ints"
 
 // "func is a function returning a pointer to a function returning a pointer to an int"

@@ -16,7 +16,7 @@ nav_order: 14
 - number of iterations = number of matching characters
 - leaks information about length of loop
 
-```C
+```c
 int check_passphrase(const char *versus) { 
 	int i = 0; 
 	while (passphrase[i] == versus[i] && passphrase[i]) { 
@@ -66,7 +66,7 @@ int check_passphrase(const char *versus) {
 *exercise*
 - psuedocode:
 
-```C
+```c
 char array[CACHE_SIZE]; 
 AccessAllOf(array); 
 *other_address += 1; 
@@ -87,7 +87,7 @@ TimeAccessingArray();
 
 *exercise - inferring cache accesses 1*
 
-```C
+```c
 char *array; 
 array = AllocateAlignedPhysicalMemory(CACHE_SIZE); 
 LoadIntoCache(array, CACHE_SIZE); 
@@ -107,7 +107,7 @@ if (TimeAccessTo(&array[index]) > THRESHOLD) {
 
 *exercise - inferring cache accesses 2*
 
-```C
+```c
 char *other_array = ...; 
 char *array; 
 array = AllocateAlignedPhysicalMemory(CACHE_SIZE); 
@@ -126,7 +126,7 @@ for (int i = 0; i < CACHE_SIZE; i += BLOCK_SIZE) {
 
 *exercise - inferring cache accesses 3*
 
-```C
+```c
 char *array; 
 posix_memalign(&array, CACHE_SIZE, CACHE_SIZE); 
 LoadIntoCache(array, CACHE_SIZE); 
@@ -156,7 +156,7 @@ if (TimeAccessTo(&array[index1]) > THRESHOLD ||
 
 *exercise - reading a value*
 
-```C
+```c
 char *array; 
 posix_memalign(&array, CACHE_SIZE, CACHE_SIZE); 
 AccessAllOf(array); 
@@ -181,7 +181,7 @@ for (int i = 0; i < CACHE_SIZE; i += BLOCK_SIZE) {
 
 **Reading a Value Without Really Reading It**
 
-```C
+```c
 char *array; 
 posix_memalign(&array, CACHE_SIZE, CACHE_SIZE); 
 AccessAllOf(array); 
@@ -199,7 +199,7 @@ for (int i = 0; i < CACHE_SIZE; i += BLOCK_SIZE) {
 - detect code that never runs and read the value it has
 
 ## Seeing Past a `segfault`
-```C
+```c
 Prime(); 
 if (something false) { 
 	triggerSegfault(); 
@@ -219,14 +219,14 @@ Probe();
 - suppose code is run with extra privileges
 - assume x chosen by attacker
 
-```C
+```c
 if (x < array1_size)    // sometimes gets mispredicted, goes out of bounds
 	y = array2[array1[x] * 4096;    // leaks the lower bits of array1[x]
 ```
 
 *exercise*
 
-```C
+```c
 char array1[...]; 
 ...
 int secret; 
@@ -240,7 +240,7 @@ y = array2[array1[x] * 4096];
 
 *exercise*
 
-```C
+```c
 unsigned char array1[...]; 
 ... 
 int secret; 
@@ -254,7 +254,7 @@ y = array2[array1[x] * 4096];
 
 **Exploit with Contrived Code**
 
-```C
+```c
 /* in kernel: */ 
 int systemCallHandler(int x) { 
 	if (x < array1_size) 
@@ -276,14 +276,14 @@ int targetValue = (evictedSet − array2StartSet) / setsPer4K;
 
 **Really Contrived?**
 
-```C
+```c
 char *array1; char *array2; 
 if (x < array1_size) 
 	y = array2[array1[x] * 4096];
 ```
 - times 4096 shifts so we can get lower bits of target value
 
-```C
+```c
 int *array1; int *array2; 
 if (x < array1_size) 
 	y = array2[array1[x]];

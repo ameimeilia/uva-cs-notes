@@ -19,7 +19,7 @@ nav_order: 8
 
 ## `pthread_create`
 
-```C
+```c
 void *ComputerPi(void *argument) { ... }
 void *PrintClassList(void *argument) { ... }
 int main() {
@@ -45,7 +45,7 @@ int main() {
 - non-deterministic behavior when working with threads → race conditions
 *example - output `in the thread` ~ 4% of the time*
 
-```C
+```c
 #include <pthread.h>
 #include <stdio.h>
 void *print_message(void *ignored_argument) {
@@ -65,7 +65,7 @@ int main() {
 
 **Solutions**
 
-```C
+```c
 printf("Done starting thread\n");
 pthread_join(the_thread, NULL); // wait for thread
 return 0;
@@ -76,7 +76,7 @@ return 0;
 - thread return value is pointer to anything
 - `R = 0` if successful, error code otherwise
 
-```C
+```c
 printf("Done starting thread\n");
 pthread_exit(NULL);
 ```
@@ -87,7 +87,7 @@ pthread_exit(NULL);
 
 **Error Checking `pthread_create`**
 
-```C
+```c
 int error = pthread_create(...);
 if (error != 0) {
 	/* print some error message */
@@ -137,7 +137,7 @@ if (error != 0) {
 
 ## Returning from Threads
 
-```C
+```c
 /* omitted: headers */
 void *create_string(void *ignored_argument) {
 	char string[1024];
@@ -166,7 +166,7 @@ int main() {
 - detach = don’t care about return value, etc.
 - system will deallocate when thread terminates
 
-```C
+```c
 void *show_progress(void * ...) { ... }
 void spawn_show_progress_thread() {
 	pthread_t show_progress_thread;
@@ -185,7 +185,7 @@ int main() {
 
 **Starting Threads Detached**
 
-```C
+```c
 void *show_progress(void * ...) { ... }
 void spawn_show_progress_thread() {
 	pthread_t show_progress_thread;
@@ -199,7 +199,7 @@ void spawn_show_progress_thread() {
 
 **Setting Stack Sizes**
 
-```C
+```c
 void *show_progress(void * ...) { ... }
 void spawn_show_progress_thread() {
 	pthread_t show_progress_thread;

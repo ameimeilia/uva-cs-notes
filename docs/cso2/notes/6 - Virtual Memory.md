@@ -93,7 +93,7 @@ nav_order: 6
 ## `mmap`
 - function to “map”/link a file to memory
 
-``` C
+```c
 int file = open("somefile.dat", O_RDWR);
 // data is region of memory that represents file
 char *data = mmap(..., file, 0);
@@ -167,7 +167,7 @@ tricks:
 
 ## `posix_memalign`
 
-```C
+```c
 void *result;
 error_code = posix_memalign(&result, alingment, size);
 ```

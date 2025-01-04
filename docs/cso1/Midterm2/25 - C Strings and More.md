@@ -29,7 +29,7 @@ nav_order: 10
 
 ## Command Line Arguments
 
-```C
+```c
 int main(int argc, char **argv){
 	if (argc > 0){
 		printf("argument was %s", *argv);
@@ -42,7 +42,7 @@ int main(int argc, char **argv){
 
 - to print `Hello`:
 
-```C
+```c
 int main(int argc, char **argv){
 	if (argc > 0){
 		printf("argument was %s", *(argv + 1));    // or argv[1]
@@ -57,7 +57,7 @@ int main(int argc, char **argv){
 
 ## String Helper Functions
 
-```C
+```c
 size_t strlen(const char *str)
 ```
 - `size_t` is a flexible type that stores the integer the size of the pointer (32/64)
