@@ -14,7 +14,9 @@ runtimeOnly 'org.slf4j:slf4j-api:2.0.16'
 runtimeOnly 'org.slf4j:slf4j-simple:2.0.16'
 
 # Foreign Keys
+
 ## Example Courses Database
+
 ### Students
 
 ```sqlite
@@ -32,6 +34,7 @@ CREATE TABLE IF NOT EXISTS Students (
 |---|---|---|---|
 |1|Jonathan|Doe|abc2def|
 |2|Jane|Smith|ghi3jkl|
+
 ### Courses
 
 ```sqlite
@@ -74,10 +77,12 @@ CREATE TABLE Enrollments(
 |---|---|---|
 |1|1|12345|
 |2|2|12345|
+
 ## `FOREIGN KEY`
 - a **reference** from a record in one table to a record in, typically, another table
 - want to enforce **data integrity**
 - example: for every record in **Enrollments**, StudentID is a _real_ student and CRN is a _real_ course
+
 ### Foreign key syntax:
 
 ```sqlite
@@ -87,6 +92,7 @@ FOREIGN KEY (StudentID) REFERENCES Students (StudentID)
 - in the **Enrollments** Table the field `Enrollments.StudentID` is referencing `Students.StudentsID` in the `Students` Table
 - **every** `Enrollments.StudentID` for every record in our Enrollments table **must** exist in the `Students` table
 - two columns having the same name immediately implies a foreign key relationship
+
 ### Enabling Foreign Keys in SQLite
 - By default, foreign keys in SQLite **are not enforced**
 - to **enable** foreign key enforcement **per connection**:
@@ -96,6 +102,7 @@ PRAGMA foreign_keys=ON;
 ```
 
 - There is no “permanent” way to turn on foreign key enforcement for a database.
+
 ### ON DELETE CASCADE
 
 ```sqlite
@@ -104,7 +111,9 @@ FOREIGN KEY (StudentID) REFERENCES Students (StudentID) ON DELETE CASCADE,
 
 - “If the referenced Student in the Students table is deleted, then _cascade_ that deletion to all records with that StudentID in Enrollments”.
 - without `ON CASCADE DELETE`, an error will be thrown when deleting a record that is referenced in another table
+
 # Joins
+
 ## Starting Database
 **Students**
 
@@ -133,10 +142,12 @@ FOREIGN KEY (StudentID) REFERENCES Students (StudentID) ON DELETE CASCADE,
 |4|3|98765|
 |5|3|54321|
 |6|4|98765|
+
 ## Use Case
 - “I want to get the names and computingIDs of all students in CS 3140, as well as the section they are enrolled in”
 - Course’s table where that info is stored does not contain any information about what students are enrolled in the class.
 - use `JOIN` to write as a single query
+
 ### Without Join
 
 ```sqlite
@@ -208,6 +219,7 @@ Jack       Black     lmn4opq      2
 ```
 
 ## Types of Joins
+
 ### INNER Joins
 
 ```sqlite
@@ -215,8 +227,10 @@ FROM TableA JOIN TableB ON TableA.ColumnName = TableB.ColumnName
 ```
 
 - used to **only** combine matching data when joining tables
+
 ### CROSS Join
 - used to combine every record of one table with every record of another table
+
 ### LEFT OUTER JOIN
 
 ```sqlite

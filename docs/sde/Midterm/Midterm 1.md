@@ -112,7 +112,7 @@ nav_order: 11
 	- `assertTrue` / `assertFalse`: checks if a condition is true or false
 	- `assertThrows`: checks whether a specific exception was thrown
 
-```Java
+```java
     @Test
     public void withdrawInsufficientFundsException() {
         assertThrows(RuntimeException.class, () -> testAccount.withdraw(600));
@@ -157,7 +157,7 @@ nav_order: 11
 ## Making your own Exceptions
 - usually use `RuntimeException` class
 
-```Java
+```java
 public class InsufficientFundsException extends RuntimeException {
     public InsufficientFundsException(String message) {
         super(message);
@@ -220,7 +220,7 @@ public class InsufficientFundsException extends RuntimeException {
 
 general structure:
 
-```Java
+```java
 (parameters) -> {code block} // don't need parenthesis for 1 parameter
 
 // or
@@ -230,7 +230,7 @@ general structure:
 
 *example*
 
-```Java
+```java
 Comparator<String> ignoreCase = (s1, s2) -> {
     return s1.toUpperCase().compareTo(s2.toUpperCase());
 };
@@ -249,7 +249,7 @@ System.out.println(words);
 1. **Comparator**: used to sort lists, used for `.sorted()` and `.sort()`
 2. **Consumer**: take in a value, do something with it, but don’t return, used for `forEach()`
 
-```Java
+```java
 // replace
 for(Item item : itemList) {
     System.out.println(item);
@@ -261,13 +261,13 @@ itemList.forEach(item -> System.out.println(item))
 
 3. **Predicate**: checks if a value meets a condition, used for `filter()`
 
-```Java
+```java
 (student) -> student.getGPA() > 3.5 // returns true for students with GPA > 3.5
 ```
 
 4. **Function**: transforms an input of type `T` and returns `R`, used for `map()`
 
-```Java
+```java
 x -> x.toString().toUpperCase() // takes object x and returns String
 
 d -> (int)(d + 0.5) // takes Double and returns an Integer
@@ -275,7 +275,7 @@ d -> (int)(d + 0.5) // takes Double and returns an Integer
 
 5. **Executable**: defines an executable, used for` assertThrows()` to check for exception
 
-```Java
+```java
 () -> student.enroll(cs3140)
 ```
 
@@ -285,21 +285,21 @@ d -> (int)(d + 0.5) // takes Double and returns an Integer
 **Making Streams from** 
 1. List
 
-```Java
+```java
 List<State> stateList = new ArrayList<>();
 Stream<State> stateStream = stateList.stream();
 ```
 
 2. Set
 
-```Java
+```java
 Set<State> stateSet = new HashSet<>();
 Stream<State> stateStream = stateSet.stream();
 ```
 
 3. Map (via entrySet())
 
-```Java
+```java
 Map<String, State> stateMap = new HashMap<>();
 Stream<Map.Entry<String, State>> entryStream = stateMap.entrySet().stream();
 ```
@@ -315,25 +315,25 @@ Stream<Map.Entry<String, State>> entryStream = stateMap.entrySet().stream();
 **Intermediate operations**: Operations that transform a stream and return another stream for further processing
 - **`sorted`**: Sorts elements of the stream using a comparator
 
-```Java
+```java
 .sorted(Comparator.comparing(State::getPopulation))
 ```
 
 - **`map`**: Transforms each element in the stream.
 
-```Java
+```java
 .map(state -> state.getName())
 ```
 
 - **`filter`**: Filters elements based on a condition.
 
-```Java
+```java
 .filter(state -> state.getPopulation() > 1000000)
 ```
 
 - **`limit`**: Limits the number of elements in the stream.
 
-```Java
+```java
 .limit(5)
 ```
 
@@ -352,19 +352,19 @@ Stream<Map.Entry<String, State>> entryStream = stateMap.entrySet().stream();
 **Terminal Operations**: Operations that end the stream and produce a result.
 - **`forEach`**: Performs an action for each element in the stream.
 
-```Java
+```java
 .forEach(state -> System.out.println(state.getName()))
 ```
 
 - **`count`**: Returns the number of elements in the stream.
 
-```Java
+```java
 long count = stateList.stream().count();
 ```
 
 - **`toList`**: Turn elements of stream into list
 
-```Java
+```java
 List<State> smallestStates = stateList.stream()
     .sorted(Comparator.comparing(State::getPopulation))
     .limit(5)
@@ -373,7 +373,7 @@ List<State> smallestStates = stateList.stream()
 
 - **`reduce`**: Combines all elements into a single result.
 
-```Java
+```java
 int totalPopulation = stateList.stream()
     .map(State::getPopulation)
     .reduce(0, Integer::sum);

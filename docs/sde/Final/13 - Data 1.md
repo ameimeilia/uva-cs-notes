@@ -11,6 +11,7 @@ nav_order: 3
 - To prevent this, data can be stored using:
     - **Files**
     - **Databases**
+
 ## Files
 - File saving allows reopening data even after closing the program or restarting the computer.
 - Common file types for data persistence include:
@@ -18,6 +19,7 @@ nav_order: 3
     - Document files (.doc, .pdf)
     - Media files (.mp3, .png)
     - Executable files (.exe, .jar)
+
 ## Databases
 - Databases store data using files but abstract away the details of how data is managed.
 - Offer significant performance optimizations compared to manually handling file storage.
@@ -28,14 +30,17 @@ nav_order: 3
 - Tools:
     - **JDBC**: Direct database interaction.
     - **Hibernate**: ORM tool to abstract SQL, simplifying database interactions.
+
 # JSON (JavaScript Object Notation)
 - JSON is a **human-readable** and **writable** data format.
 - Commonly used for data transmission between systems or storing structured data.
+
 ## Benefits of JSON
 - **Structured yet flexible**: Unlike CSV, JSON allows easily adding new data (e.g., “city”) without breaking existing structures.
 - **Nesting**: Supports nested structures like lists and maps, which CSV does not easily handle.
 - **Human-readable**: Easy to read and understand the data format.
 - **Object-friendly**: JSON maps well to programming objects, making it easy to convert objects into JSON strings and vice versa for data transmission.
+
 ## Data Types Supported in JSON
 - **Integers**: Whole numbers (e.g., `5`)
 - **Floats**: Decimal numbers (e.g., `3.5`)
@@ -43,6 +48,7 @@ nav_order: 3
 - **Booleans**: True or false values (`true`, `false`)
 - **Lists**: Ordered data in square brackets (e.g., `[1, 2, 3]`)
 - **Maps**: Key-value pairs in curly braces, where keys must be strings (e.g., `{"key": "value"}`)
+
 ## Example structure
 
 ```
@@ -116,6 +122,7 @@ nav_order: 3
 - The outer structure is a **map** with a key `"conferences"` that maps to a **list** of conference objects.
 - Each **conference** object is a **map** with keys like `"abbreviation"`, `"id"`, `"name"`, and `"teams"` (which is itself a list of team objects).
 - Each **team** object is a **map** containing details like `"id"`, `"name"`, `"abbreviation"`, `"record"`, etc.
+
 ## Stepping through object
 1. Get the list of conferences: `conferenceList = myJsonObject["conferences"]`
 2. Find the ACC conference: `accConference = conferenceList[0]`
@@ -125,6 +132,7 @@ nav_order: 3
 6. Access specific data like total wins: `totalWins = uvaRecord["totalWins"]`
 
 - **Key takeaway**: JSON parsing involves stepping through the structure from the outermost level to the specific data, often using maps and lists to drill down.
+
 # Parsing JSON in Java
 
 ## Org.JSON
@@ -150,6 +158,7 @@ nav_order: 3
 **Common methods**:
 - `getInt()`, `getString()`, etc.: Retrieve values from the array.
 - `length()`: Get the size of the array.
+
 ## Example: Parse QUIZ JSON
 - parse the following JSON string into a series of objects that will let us build a quiz from this format
 
@@ -195,6 +204,7 @@ nav_order: 3
 ```
 
 ## Our classes
+
 ### `Quiz.java`
 
 - Represents the overall quiz.
@@ -222,12 +232,14 @@ nav_order: 3
     - `answer`: The correct answer.
 - Methods:
     - `toString()`: Print the question, options, and answer.
+
 ## Parsing a JSON String
+
 ### Parsing QuizQuestion json
 - Extract question, options (as `JSONArray`), and answer from JSON.`
 - Example method:
 
-```Java
+```java
     private QuizQuestion jsonToQuizQuestion(JSONObject jsonObject) {
 	    String question = jsonObject.getString("question");
 	    String answer = jsonObject.getString("answer");
@@ -247,7 +259,7 @@ nav_order: 3
 - Parse each category by iterating over the array and converting it into `QuizQuestion` objects.
 - Sample code for parsing categories and questions:
 
-```Java
+```java
 private Quiz getQuizFromJSON(JSONObject root) {
         var quiz = new Quiz();
 
@@ -275,7 +287,7 @@ private Quiz getQuizFromJSON(JSONObject root) {
 
 ### Final Quiz Parser code:
 
-```Java
+```java
 public class QuizParser {
     public static void main(String[] args) throws IOException{
         QuizParser parser = new QuizParser();
@@ -342,10 +354,11 @@ public class QuizParser {
 
 # Building JSON Objects
 - **Goal**: Convert a `Quiz` object into a `JSONObject`.
+
 ## QuizQuestion to JSONObject
 - `QuizQuestion` has the following fields:
 
-```Java
+```java
 public class QuizQuestion {
     private String question;
     private List<String> options;
@@ -357,7 +370,7 @@ public class QuizQuestion {
 
 - code to write to a `QuizQuestion` to a `JSONObject`
 
-```Java
+```java
 public JSONObject toJSON() {
 	JSONObject questionJSON = new JSONObject();
 
@@ -376,7 +389,7 @@ public JSONObject toJSON() {
 ## QuizCategory to JSONArray
 - `QuizCategory` has the following fields:
 
-```Java
+```java
 public class QuizCategory {
     private String categoryName;
     private List<QuizQuestion> questions;
@@ -387,7 +400,7 @@ public class QuizCategory {
 
 - `toJSON()` converts the list of `QuizQuestion` objects to a `JSONArray` without including the category name (handled separately in `Quiz`)
 
-```Java
+```java
 public JSONArray toJSON() {
     List<JSONObject> questionObjects = questions.stream()
             .map(q -> q.toJSON())
@@ -399,14 +412,14 @@ public JSONArray toJSON() {
 ## Quiz to JSON Object
 - `Quiz.java` field:
 
-```Java
+```java
 public class Quiz {
     private Map<String,QuizCategory> quiz;
 ```
 
 From there, we can get our entire Quiz as JSON using, in Quiz.java
 
-```Java
+```java
 public JSONObject toJSON() {
 	JSONObject quizJSON = new JSONObject();
 	for (String categoryName: quiz.keySet()) {
@@ -424,7 +437,7 @@ public JSONObject toJSON() {
 
 - after running `toJSON()` on a quiz built from our starting json in the last module:
 
-```Java
+```java
 // printed using .toString(int indentFactor) -> questionObject.toString(2)
 {"quiz": {
   "sports": [{

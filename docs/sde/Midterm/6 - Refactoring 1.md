@@ -87,7 +87,7 @@ public class NegativeBalanceException extends IllegalArgumentException{
     }
 ```
 
-```Java
+```java
 // return value of error codes might be ignored -> use exceptions instead
     public void withdraw(double amount) {
         if (amount > balance) {
@@ -102,7 +102,7 @@ public class NegativeBalanceException extends IllegalArgumentException{
     }
 ```
 
-```Java
+```java
 public class InsufficientFundsException extends RuntimeException {
     public InsufficientFundsException(String message) {
         super(message);
@@ -122,7 +122,7 @@ public class InsufficientFundsException extends RuntimeException {
 
 ### Example:
 
-```Java
+```java
 public void withdraw(double amount) {
     assert amount > 0 && amount <= balance;
     balance -= amount;
@@ -141,7 +141,7 @@ public void withdraw(double amount) {
 
 *example - pre-condition: prime number must be positive*
 
-```Java
+```java
     public boolean isPrime(int number) {
         if (number <= 0) {
             throw new RuntimeException("isPrime can only be called positive inputs. Was called with " + number);
@@ -175,7 +175,7 @@ Use try-catch when:
 - Handling exceptions in the client (e.g., `Main`) **increases coupling**.
 - Clients should only handle exceptions when they can **meaningfully handle** them
 
-```Java
+```java
     public String readTextFile(String filename) {
         try {
             BufferedReader bufferedReader = getBufferedReader(filename);
@@ -221,7 +221,7 @@ Messages should communicate:
 
 *example -* `InsufficientFundsException`
 
-```Java
+```java
     private String getInsufficientFundsMessage(BankAccount account, double amount) {
         return "Error: insufficient funds in account #" + id + " - balance: " + balance +
         " for transaction amount: " + amount;
@@ -233,7 +233,7 @@ Messages should communicate:
 
 - Clients are responsible for **handling** exceptions (e.g., canceling a transaction if funds are insufficient).
 
-```Java
+```java
     try {
         account.withdraw(amount);
     } catch (InsufficientFundsException e) {
@@ -252,7 +252,7 @@ preconditions:
 
 *example - equivalence test*
 
-```Java
+```java
 import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -278,7 +278,7 @@ public class BankAccountTest {
 
 *example - expect `RuntimeException`*
 
-```Java
+```java
     @Test
     public void withdrawInsufficientFundsException() {
         assertThrows(RuntimeException.class, () -> testAccount.withdraw(600));

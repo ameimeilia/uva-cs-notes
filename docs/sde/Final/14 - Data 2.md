@@ -6,41 +6,53 @@ nav_order: 4
 ---
 # Databases and SQL
 - **Database**: A place to store persistent data for future access by programs.
+
 ### Relational Database
 - Stores data in structured tables, with relationships established via foreign keys
 - Data is explicitly formatted and there are constraints on the contents of the tables to store data integrity
+
 ### Non-relationship database
 - Known as **NoSQL** databases, they store data in documents, often JSON-like, without enforced structure.
+
 ## Tables
 - Organizes data into **attributes** (columns) and **records** (rows)
 - each attribute has a specific datatype
+
 ### DataTypes
 - **Text**: UTF-8 string (like Java `String`), dynamically sized
 - **Integer**: Whole number (up to 8 bytes, similar to Java `long`)
 - **Real**: Floating-point number (stored in 8 bytes, like Java `double`)
 - **Blob**: (Binary Large OBject) Raw data, stored as input (useful for images, files)
 - **Null**: Default type allowed in any column, indicating missing or blank data
+
 ### Primary Key
 - Identifies unique records in a table
 	- Must be unique (no duplicates)
 	- Not null (cannot be blank)
 - Generally an integer, often auto-generated
+
 # SQLite
 - Library providing a self-contained **embedded** SQL database
+
 ## Embedded Database
 - Database tightly integrated with the application, vs database being a separate application/server
 - SQLite is invoked directly, stored as literal files on the disk
+
 ### Usages of SQLite
 - **Local Storage**: Common for storing settings/data in desktop/mobile apps (e.g., web browsers).
 - **Supported Platforms**: Included in Android, iOS, Mac OS X (10.4+), and Windows 10+.
 - **Portability**: SQLite files are cross-platform compatible, simplifying data sharing.
+
 ### Limitations of SQLite
 - **Scalability**: Not suited for high-traffic, concurrent write operations.
 - **Concurrency**: Allows multiple readers but restricts to one writer at a time for data consistency.
 - **Data Size**: Can store up to 281 TB, but file system limitations often impose smaller storage caps.
+
 ## sqlite3 command line
+
 ### SQLite Installation
 - [install sqlite3](https://sqlite.org/download.html) and add the sqlite3 command to your system PATH variable - [a full guide for Windows and Mac OS X can be found on TutorialsPoint here](https://www.tutorialspoint.com/sqlite/sqlite_installation.htm)
+
 ### Shell Commands
 - **`sqlite3 [filename]`**: Open or create a database file if no database file exists
 	- will then enter **SQLite Shell**
@@ -52,6 +64,7 @@ nav_order: 4
 - **`.dump`**: Generate an SQL script of the current database state.
 	- often used with the `.output` command to dump the contents to a file, and the `.read` command to run the dumped out .sql file as a script
 - **`.output`**: Redirect output to a file.
+
 #### `.output`
 
 By default, sqlite displays writes all contents to the console. For instance:
@@ -74,7 +87,9 @@ sqlite> .output
 - **Foreign Keys**: Disabled by default; must enable with `PRAGMA foreign_keys = ON`.
 - **Type Mismatches**: `1 = '1'` is false; differs from other SQL systems where this would be true.
 - **Missing Boolean/DateTime Types**: Uses integer representation for Boolean (1 for TRUE, 0 for FALSE) and Unix time for dates
+
 # Basic SQL Queries
+
 ## SQL Queries
 - **CRUD Operations**: SQL commands to Create, Read, Update, and Delete data in database tables.
 - **Core SQL Commands**:
@@ -89,10 +104,13 @@ sqlite> .output
 	- `COMMIT`: Make all changes in the transaction permanent.
 	- `ROLLBACK`: Undo changes since the last `BEGIN TRANSACTION`.
 - **Auto-Commit Mode**: SQLite commits all changes by default; transactions disable auto-commit until completed.
+
 ### Case-sensitivity
 - SQL commands and table/column names are **case-insensitive**
 - text literals are case-sensitive
+
 ### Create Table
+
 #### Syntax
 
 ```sqlite
@@ -133,6 +151,7 @@ CREATE TABLE Books (
 - `UNIQUE`: **no two records** can have the same value in this column.
 - `DEFAULT`: if column is `null` when inserting data, that `null` value is replaced by the default value
 - `CHECK`: includes a **boolean expression**; when inserted, if this expression returns FALSE, the inserted record is rejected and an error message given
+
 #### Table Constraints
 *example - unique (Title, Author) pair*
 
@@ -158,6 +177,7 @@ CREATE TABLE IF NOT EXISTS Books (
 
 - **Avoid Frequent Alterations**: Plan table design carefully to reduce the need for alterations.
 - **Backup Databases**: Always backup before making any structural changes to avoid data loss.
+
 ### INSERT
 
 ```sqlite
@@ -188,6 +208,7 @@ sqlite> SELECT * FROM Books;
 ```
 
 - data is **persistent** and can only be removed using `DELETE` or `DROP` command
+
 ### SELECT
 
 ```sqlite
@@ -284,6 +305,7 @@ The Shadow Rising                   The Wheel of Time                 4
 - before **ever** using `UPDATE` or `DELETE`, do the following:
 	1. **Make a back-up**: copy the database file and paste it somewhere else
 	2. `BEGIN TRANSACTION`
+
 #### `BEGIN TRANSACTION`, `ROLLBACK`, and `COMMIT`
 - `BEGIN TRANSACTION` sets a “restore point”
 
@@ -301,6 +323,7 @@ sqlite> ROLLBACK;
 ```
 
 - use `COMMIT` to permanently store the changes in the database
+
 ### UPDATE
 - used to _change_ existing data
 

@@ -5,11 +5,12 @@ parent: Final Notes
 nav_order: 9
 ---
 Example Repository: [https://github.com/sde-coursepack/HibernateExample](https://github.com/sde-coursepack/HibernateExample)
+
 ### Entity Classes
 - classes whose data we want to store in our database.  
 - An entity class should look something like [State.java](https://github.com/sde-coursepack/HibernateExamples/blob/master/src/main/java/edu/virginia/cs/State.java) :
 
-```Java
+```java
 @Entity
 @Table(name = "STATES")
 public class State {
@@ -35,10 +36,11 @@ public class State {
 - class also has:
 	1. Getters and setters for every field that you want to store in the table
 	2. A zero-argument constructor
+
 #### Hibernate Configuration
 - entity class is connected to hibernate in the [hibernate.cfg.xml](https://github.com/sde-coursepack/HibernateExamples/blob/master/src/main/resources/hibernate.cfg.xml) file in `src/main/resources`
 
-```Java
+```java
 <hibernate-configuration>
     <session-factory>
         <property name="show_sql">false</property>
@@ -62,10 +64,11 @@ public class State {
 	- specifies where the database is
 2. mapping portion
 	- list all classes that are **entity** classes
+
 #### Simple Persist Example
 - [State.java](https://github.com/sde-coursepack/HibernateExamples/blob/master/src/main/java/edu/virginia/cs/State.java) is tied to the Database Table STATES:
 
-```Java
+```java
 @Entity
 @Table(name = "STATES")
 public class State { … }
@@ -75,7 +78,7 @@ public class State { … }
 
 **Getting and using a hibernate session**
 
-```Java
+```java
 var session = HibernateUtil.getSessionFactory().openSession();
 session.beginTransaction();
 
@@ -89,7 +92,7 @@ session.getTransaction().commit();
 
 - the following code:
 
-```Java
+```java
 State virginia = new State("Virginia", 8700000, "Richmond");
 session.persist(virginia);
 session.getTransaction().commit();
@@ -103,10 +106,11 @@ session.getTransaction().commit();
 
 - add objects to the database without any SQL
 - code is no longer tied to one specific database implementation → can change the database/type of database in the configuration without changing any code
+
 #### Single Get Example
 - Getting a single object from its ID/primary key - typically an int:
 
-```Java
+```java
 // returns null if object not found -> do null check
 State maryland = session.get(State.class, 1);
 System.out.println(maryland);
@@ -115,7 +119,7 @@ System.out.println(maryland);
 #### Get All Example
 - Getting all objects of a particular class from the database:
 
-```Java
+```java
 String hql = "from State"; //class name, not Table name!
 Query<State> stateQuery = session.createQuery(hql);
 List<State> stateList = stateQuery.getResultList();
@@ -124,7 +128,7 @@ List<State> stateList = stateQuery.getResultList();
 #### HQL Query Example
 - HQL stands for Hibernate Query Language:
 
-```Java
+```java
 String hql = "SELECT e FROM State e WHERE e.capitolCity = :name";
  TypedQuery<State> capitolQuery = StateDemo.session.createQuery(hql, State.class);
  capitolQuery.setParameter("name", capitolCity);
@@ -135,11 +139,12 @@ String hql = "SELECT e FROM State e WHERE e.capitolCity = :name";
 - `:name` is an example of a query parameter: specify, at runtime, the value of the query
 - allow us to define a constant as a query, but then set the parameters at runtime.
 - Another advantage of HQL is that Hibernate will translate it into the correct SQL dialect for your app
+
 #### Update Example
 - Hibernate will determine when to use Update or Insert, so in the query you simply use persist()
 - Example from [GetExample.java](https://github.com/sde-coursepack/HibernateExamples/blob/master/src/main/java/edu/virginia/cs/GetExample.java):
 
-```Java
+```java
 private static void deposit100ToAccount(Account account) {
 	account.deposit(100);
 	session.persist(account); //Updates the account balance on the database
@@ -153,7 +158,7 @@ private static void deposit100ToAccount(Account account) {
 - there are many other JPA implementations
 - Example from [GetExample.java](https://github.com/sde-coursepack/HibernateExamples/blob/master/src/main/java/edu/virginia/cs/GetExample.java) :
 
-```Java
+```java
 private static Account getPrimaryCheckingAccountForClient(Client client) {
 	// used to create our query that uses "where" criteria
 	CriteriaBuilder builder = session.getCriteriaBuilder(); 
@@ -190,6 +195,7 @@ private static Account getPrimaryCheckingAccountForClient(Client client) {
 - two Predicates (criteria)
 	1. one for ensuring we only get Checking Accounts
 	2. one for ensuring we are only getting accounts belonging to a particular client
+
 #### For the Exam 
 - be familiar broadly with the idea of Predicates enough to interpret them
 - given a small table and a CriteriaQuery with one or more predicates, you should be able to predict what data the query returns

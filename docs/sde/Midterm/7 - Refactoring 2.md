@@ -97,7 +97,7 @@ Extract Method: [https://sde-coursepack.github.io/modules/refactoring/Extract-Me
 - **Error Codes**: Avoid using error codes; instead, throw exceptions for better error handling.
 - **Replace Exception with Optionals**: Use `Optional<T>` to represent the potential absence of a value, rather than throwing exceptions.
 
-```Java
+```java
     public int max(List<Integer> integerList) {
         if (integerList.isEmpty()) {
             throw new IllegalArgumentException("Cannot get max of empty list!");
@@ -114,7 +114,7 @@ Extract Method: [https://sde-coursepack.github.io/modules/refactoring/Extract-Me
 
 vs.
 
-```Java
+```java
     public Optional<Integer> max(List<Integer> integerList) {
         if (integerList.isEmpty()) {
             return Optional.empty();
@@ -131,7 +131,7 @@ vs.
 
 - **Replace Null with Optionals**
 
-```Java
+```java
     public Student getStudentByComputingId(String computingId) {
         for (Student student : studentList) {
             if (student.getComputingID.equals(computingId)) {
@@ -144,7 +144,7 @@ vs.
 
 vs.
 
-```Java
+```java
     public Optional<Student> getStudentByComputingId(String computingId) {
         for (Student student : studentList) {
             if (student.getComputingID.equals(computingId)) {

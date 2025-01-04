@@ -5,35 +5,43 @@ parent: Final Notes
 nav_order: 6
 ---
 # Design Pattern Background
+
 ## What's a design pattern?
 - general solutions to recurring problems in software design
 - conceptual solutions you adapt to fit specific issues in your program.
 - **Patterns vs. Algorithms**:
     - Algorithms: Step-by-step instructions to achieve a defined goal
     - Patterns: High-level solutions, similar to blueprints that outline what’s needed
+
 ### What does the pattern consist of?
 - **Intent**: Briefly describes the problem and its solution.
 - **Motivation**: Elaborates on the problem and the solution provided by the pattern.
 - **Structure**: Outlines classes involved and their relationships.
 - **Code Example**: Demonstrates the pattern in a common programming language.
+
 ## History of patterns
 - **Origins**: Concept first outlined by Christopher Alexander in "A Pattern Language" for urban design, later adapted for programming by the "Gang of Four" (Erich Gamma, John Vlissides, Ralph Johnson, and Richard Helm).
 - **GoF Book**: "Design Patterns: Elements of Reusable Object-Oriented Software" (1994), introduced 23 patterns for object-oriented design, popularizing the approach.
+
 ## Why should I learn patterns?
 - **Problem-Solving Toolkit**: Patterns provide tried and tested methods to address common software design issues.
 - **Efficient Communication**: Patterns create a shared language for discussing solutions with teammates, making ideas easier to communicate (e.g., "use a Singleton").
+
 ## Criticism of patterns
 - **Workarounds for Language Limitations**: Patterns often address limitations in a language’s abstraction level
 - **Inefficient Solutions**: Strictly following patterns without adapting them can lead to inefficient solutions.
 - **Overuse**: Novices may apply patterns inappropriately, complicating situations where simpler code would suffice ("if all you have is a hammer, everything looks like a nail").
+
 ## Classification of patterns
 - **Complexity & Scope**: Patterns vary in detail and their effect on system design:
     - **Idioms**: Low-level patterns specific to a programming language.
     - **Architectural Patterns**: High-level, universal patterns that influence an application’s entire structure.
+
 ### Main Categories by Intent
 1. **Creational Patterns**: Offer ways to create objects, enhancing flexibility and code reuse.
 2. **Structural Patterns**: Describe methods to assemble objects/classes into larger structures while ensuring efficiency.
 3. **Behavioral Patterns**: Focus on effective communication and responsibility distribution among objects.
+
 # Design Patterns To Know
 - Singleton: one class only has one instance and is accessible globally
 - Simple Factory: returns different types of objects based on input
@@ -46,8 +54,11 @@ nav_order: 6
 - Adaptor: converts one interface to a compatible one by wrapping
 - Facade: simplified interface to a library, framework, or complex set of classes
 - Decorator: attach new behaviors to objects by wrapping them
+
 ## Creational Patterns
+
 ### Singleton
+
 ####  Intent
 - ensure that a class has only one instance, while providing a global access point to this instance.
 - **Problem Solving**: Addresses two issues (though this violates the _Single Responsibility Principle_):
@@ -59,16 +70,19 @@ nav_order: 6
         - Provides access from anywhere in the program but protects the instance from being overwritten.
         - Centralizes the control of instance management, avoiding scattered implementation.
 - **Modern Use**: Many refer to anything addressing either problem as a "singleton."
+
 ####  Solution
 - **Private Constructor**: Prevents the use of `new` to create a second instance.
 - **Static Creation Method**: Acts as the constructor, calling the private constructor once and caching the object.
     - All calls to this static method return the same cached instance.
+
 ####  Structure
 
 ![The structure of the Singleton pattern](https://refactoring.guru/images/patterns/diagrams/singleton/structure-en-indexed.png?id=b0217ae066cd3b757677d119551f9a8f)
 
 - The **Singleton** class declares the static method `getInstance` that returns the same instance of its own class.
 - The Singleton’s constructor should be hidden from the client code. Calling the `getInstance` method should be the only way of getting the Singleton object.
+
 ####  Applicability
 - **Use Cases**:
     - When a class should have only one instance across the application, e.g., a shared database object.
@@ -77,30 +91,37 @@ nav_order: 6
     - Singleton blocks all other creation methods, using a single special creation method (`getInstance`).
     - This method creates the instance only once; subsequent calls return the same object.
     - Singleton can be adjusted to allow multiple instances if needed by modifying `getInstance`.
+
 ####  How to Implement
 - **Private Static Field**: Add this to store the Singleton instance.
 - **Public Static Creation Method**: Provides access to the Singleton instance.
 - **Lazy Initialization**: Ensure the instance is created only on the first call to the static method.
 - **Private Constructor**: Restricts object creation; only the static method can invoke the constructor.
 - **Client Code Updates**: Replace direct calls to the constructor with calls to the static creation method.
+
 #### Pros
 - Guarantees a single instance of the class.
 - Provides a global access point to that instance.
 - Singleton is created only when it’s first accessed.
+
 #### Cons
 - **Violates Single Responsibility Principle**: Addresses both instance control and access.
 - **Potential Design Pitfalls**: Can obscure poor design, as components might depend too heavily on each other.
 - **Thread-Safety**: Requires additional handling in multithreaded environments to prevent multiple instances.
 - **Testing Challenges**: Difficult to mock or unit test due to private constructor and static methods.
+
 ### Simple Factory
+
 #### What is a Simple Factory?
 - The simple factory is not a _real_ pattern, it is a **pseudo-pattern**
 - a class that, based on a given input, returns objects of different types.
 - The simple factory is just the **concrete factory**, without the extra factory class abstraction found in either the factory method or abstract factory.
+
 #### Pros
 - **encapsulates** object creation.
 - **decouples** client code from object creation.
 - **isolates** object creation logic, thus changes are made in only one place.
+
 #### Cons
 - if a new type of object is added to the system, then the logic to identify and create objects must be changed
 
@@ -110,7 +131,7 @@ nav_order: 6
 
 - object creation is done in `LaptopFactory` based on information provided by the client code
 
-```Java
+```java
 public class LaptopFactory {
 
     // Objects are created here 
@@ -136,7 +157,7 @@ public class LaptopFactory {
 
 - client code receives an object depending on the requested type
 
-```Java
+```java
 public class Client {
     public static void main(String[] args) {
         LaptopFactory laptopFactory = new LaptopFactory();
@@ -150,18 +171,21 @@ public class Client {
 ```
 
 ### Builder
+
 #### 1. Introduction
 - **Purpose**: Simplifies the creation of objects with numerous properties, preventing cluttered constructors and enhancing readability.
 - **Definition**: A **creational design pattern** that separates object construction from representation, allowing for more flexible and maintainable object creation.
+
 #### 2. Advantages of Builder Pattern
 - **Flexibility**: Decouples construction from representation, enabling different object configurations without excessive constructors or setters.
 - **Readability**: Uses fluent interfaces, making the object construction process intuitive and understandable for developers.
 - **Immutability**: Facilitates the creation of immutable objects, ensuring thread safety and preventing accidental modifications after construction.
+
 #### 3. Classic Builder Pattern
 - create a separate _Builder_ inner class that contains methods to set each property of and build the constructed object
 - facilitates a sequential configuration process and enhances code organization and readability
 
-```Java
+```java
 public class Post {
 
     private final String title;
@@ -207,7 +231,7 @@ public class Post {
 
 - use the _Builder_ to create a new object:
 
-```Java
+```java
 Post post = new Post.Builder()
   .title("Java Builder Pattern")
   .text("Explaining how to implement the Builder Pattern in Java")
@@ -218,7 +242,7 @@ Post post = new Post.Builder()
 #### 4. Generic Builder Pattern
 - _GenericBuilder_ class can construct various types of objects by leveraging generics:
 
-```Java
+```java
 public class GenericBuilder<T> {
     private final Supplier<T> supplier;
 
@@ -279,7 +303,7 @@ Post post = GenericBuilder.of(GenericPost::new)
 
 - To use Lombok, import the dependency from the [Maven central repository](https://mvnrepository.com/artifact/org.projectlombok/lombok):
 
-```Java
+```java
 <dependency>
     <groupId>org.projectlombok</groupId>
     <artifactId>lombok</artifactId>
@@ -289,7 +313,7 @@ Post post = GenericBuilder.of(GenericPost::new)
 
 - Create a new _LombokPost_ class using the _@Builder_ annotation:
 
-```Java
+```java
 @Builder
 @Getter
 public class LombokPost {
@@ -301,7 +325,7 @@ public class LombokPost {
 
 - use the builder pattern out of the box to create new objects:
 
-```Java
+```java
 LombokPost lombokPost = LombokPost.builder()
   .title("Java Builder Pattern")
   .text("Explaining how to implement the Builder Pattern in Java")
@@ -317,6 +341,7 @@ LombokPost lombokPost = LombokPost.builder()
 	- **Unknown Object Types**: Use when exact object types and dependencies are unknown at compile time.
 	- **Extending Libraries/Frameworks**: Allowing external users to extend internal components of a framework.
 	- **Resource Reuse**: Saves resources by reusing objects like database connections or network resources, managed in a central factory method.
+
 ####  Structure
 
 ![The structure of the Factory Method pattern](https://refactoring.guru/images/patterns/diagrams/factory-method/structure-indexed.png?id=4c603207859ca1f939b17b60a3a2e9e0)
@@ -326,12 +351,13 @@ LombokPost lombokPost = LombokPost.builder()
 4. **Concrete Creators**: Override the base factory method to return specific product types.
 
 - **Usage Note**: The factory method can either create new instances or return cached instances, providing flexibility in object management.
+
 ####  Pseudocode Example
 - **Factory Method** used for creating cross-platform UI elements without coupling the client code to concrete UI classes.
 
 ![The structure of the Factory Method pattern example](https://refactoring.guru/images/patterns/diagrams/factory-method/example.png?id=67db9a5cb817913444efcb1c067c9835)
 
-```Java
+```java
 // The creator class declares the factory method that must
 // return an object of a product class. The creator's subclasses
 // usually provide the implementation of this method.
@@ -414,6 +440,7 @@ class Application is
 3. **Refactor Creation Code**: Replace direct product instantiation with factory method calls.
 4. **Subclass Factories**: Create subclasses for each product type, overriding the factory method as needed.
 5. **Optional Control Parameter**: If needed, add parameters to control product type selection within the factory.
+
 ####  Pros and Cons
 **Pros**:
 - **Decoupling**: Reduces tight coupling between creator and specific products.
@@ -421,6 +448,7 @@ class Application is
 - **Open/Closed Principle**: Allows new product types without modifying client code.
 **Cons**:
 - **Complexity**: Requires additional subclasses, increasing complexity.
+
 ### Abstract Factory
 - allows creating families of related objects without defining their concrete classes.
 - **Declare Interfaces** for each product type to define consistent product behavior.
@@ -432,6 +460,7 @@ class Application is
 	- When needing compatibility across families of related products.
 	- When future extensibility is required without concrete class dependency.
 	- When a class has multiple factory methods blurring its responsibility.
+
 ####  Structure
 ![Abstract Factory design pattern](https://refactoring.guru/images/patterns/diagrams/abstract-factory/structure-indexed.png?id=6ae1c99cbd90cf58753c633624fb1a04)
 - **Abstract Products**: Interfaces defining the product family
@@ -439,11 +468,12 @@ class Application is
 - **Abstract Factory Interface**: Declares methods to create each product.
 - **Concrete Factories**: Implement creation methods, each producing a specific variant of products.
 - **Client**: Uses factories and products via abstract interfaces, ensuring compatibility across product families without knowing concrete classes.
+
 ####  Pseudocode Example
 - **Abstract Factory** pattern used for creating cross-platform UI elements without coupling the client code to concrete UI classes, while keeping all created elements consistent with a selected operating system.
 ![The class diagram for the Abstract Factory pattern example](https://refactoring.guru/images/patterns/diagrams/abstract-factory/example.png?id=5928a61d18bf00b047463471c599100a)
 
-```Java
+```java
 // The abstract factory interface declares a set of methods that
 // return different abstract products. These products are called
 // a family and are related by a high-level theme or concept.
@@ -541,6 +571,7 @@ class ApplicationConfigurator is
 4. Define an abstract factory interface with creation methods.
 5. Implement concrete factories for each variant.
 6. Replace direct product instantiation with factory methods in the client code.
+
 ####  Pros and Cons
 **Pros**
 - Ensures compatibility between created products.
@@ -549,7 +580,9 @@ class ApplicationConfigurator is
 - Centralizes product creation for easier maintenance.
 **Cons**
 - Increased complexity due to additional interfaces and classes.
+
 ## Behavior Patterns
+
 ### Iterator
 - Allows traversing elements of a collection without exposing its underlying structure (e.g., list, stack, tree).
 - **Iterator Object**: Encapsulates traversal logic, including position and remaining elements, enabling independent traversal across multiple iterators.
@@ -559,6 +592,7 @@ class ApplicationConfigurator is
 	- **Complex Structures**: Use when the collection has an underlying complex structure hidden from the client.
 	- **Code Simplification**: Reduce duplicate traversal code, enhancing maintainability by delegating traversal logic to iterators.
 	- **Diverse Structures**: Supports traversal of various collection types using common interfaces.
+
 ####  Structure
 
 ![Structure of the Iterator design pattern](https://refactoring.guru/images/patterns/diagrams/iterator/structure-indexed.png?id=7bc28907ff6b480db6635a93ebaa10ff)
@@ -567,12 +601,13 @@ class ApplicationConfigurator is
 - **Collection Interface**: Provides methods to obtain compatible iterators for traversing its elements.
 - **Concrete Collection**: Creates instances of iterators tailored for its structure, allowing various client interactions without direct exposure.
 - **Client**: Works with iterators via interfaces, supporting various collections and traversal methods.
+
 ####  Pseudocode Example
 - **Iterator** pattern is used to walk through a special kind of collection which encapsulates access to Facebook’s social graph
 
 ![Structure of the Iterator pattern example](https://refactoring.guru/images/patterns/diagrams/iterator/example.png?id=f2a24ef3787bf80ed450709240506ff2)
 
-```Java
+```java
 // The collection interface must declare a factory method for
 // producing iterators. You can declare several methods if there
 // are different kinds of iteration available in your program.
@@ -673,15 +708,19 @@ class Application is
 - **Collection Interface**: Define methods to fetch iterators; tailor iterators based on traversal needs.
 - **Concrete Iterator Classes**: Link iterator to a specific collection; establish connection via the iterator’s constructor.
 - **Client Code**: Replace direct collection traversal with iterators.
+
 ####  Pros and Cons
+
 ##### Pros
 - **Single Responsibility**: Cleaner code, extracting traversal from collections and clients.
 - **Open/Closed**: New collections/iterators integrate without breaking existing code.
 - **Parallel Iteration**: Each iterator holds its own state, enabling parallel traversal.
 - **Delayed Iteration**: Iteration can pause and resume as needed.
+
 ##### Cons
 - **Overhead for Simple Collections**: Pattern may add unnecessary complexity.
 - **Performance**: Direct traversal might be faster in certain specialized collections.
+
 ### Strategy
 - allows defining a family of algorithms, each encapsulated in its own class, making them interchangeable at runtime.
 - suggests taking a class that does something specific in many different ways and extracting each algorithm into separate classes called **strategies**
@@ -691,6 +730,7 @@ class Application is
 	- Different algorithm versions are needed, with runtime flexibility for switching.
 	- Similar classes vary only in specific behaviors, allowing simplification through shared interfaces.
 	- Large conditional statements switching between algorithms need simplification.
+
 ####  Structure
 
 ![Structure of the Strategy design pattern](https://refactoring.guru/images/patterns/diagrams/strategy/structure-indexed.png?id=ff55c5a6273cf82a5667f3cab5b605c7)
@@ -698,10 +738,11 @@ class Application is
 - **Strategy Interface**: Declares the method all strategies must implement.
 - **Concrete Strategies**: Different classes implementing the strategy interface with specific algorithms.
 - **Client**: Instantiates a strategy and sets it in the context, allowing for runtime changes.
+
 ####  Pseudocode Example
 - use multiple **strategies** to execute various arithmetic operations.
 
-```Java
+```java
 // The strategy interface declares operations common to all
 // supported versions of some algorithm. The context uses this
 // interface to call the algorithm defined by the concrete
@@ -775,6 +816,7 @@ class ExampleApplication is
 3. Extract each algorithm to its own class, implementing the strategy interface.
 4. In the context class, add a reference to a strategy object and provide a setter for switching.
 5. Let clients associate the context with a suitable strategy.
+
 ####  Pros and Cons
 - **Pros**:
     - Algorithms are interchangeable at runtime.
@@ -784,6 +826,7 @@ class ExampleApplication is
     - Extra classes and interfaces may overcomplicate the design for few or infrequent algorithms.
     - Clients need awareness of strategy differences for proper selection.
     - Functional programming languages offer anonymous functions, which can replace strategy objects without extra classes.
+
 ### Observer
 - enables a subscription mechanism, notifying multiple objects (subscribers) about changes in the state of another object (publisher)
 - **Use Cases**:
@@ -793,6 +836,7 @@ class ExampleApplication is
 - **Mechanism**:
     - **Subscription List**: An array in the publisher holds references to subscriber objects.
     - **Methods**: Public methods add/remove subscribers from this list.
+
 ####  Structure
 
 ![Structure of the Observer design pattern](https://refactoring.guru/images/patterns/diagrams/observer/structure-indexed.png?id=2ca2c123503ede860740af2a22bc4b4d)
@@ -804,12 +848,13 @@ class ExampleApplication is
     - Allows context data to be passed, such as the publisher itself, for event-specific information.
 - **Concrete Subscribers**:
     - Implement the subscriber interface and handle notifications based on event context.
+
 ####  Pseudocode Example
 - **Observer** pattern lets the text editor object notify other service objects about changes in its state
 
 ![Structure of the Observer pattern example](https://refactoring.guru/images/patterns/diagrams/observer/example.png?id=6d0603ab5a00e4463b81d9639cd746a2)
 
-```Java
+```java
 // The base publisher class includes subscription management
 // code and notification methods.
 class EventManager is
@@ -910,13 +955,16 @@ class Application is
     - Pass context data (e.g., event info) in `update` method.
 5. **Client Setup**:
     - Create subscribers and register them with publishers.
+
 ####  Pros and Cons
 - **Pros**:
     - Adheres to the **Open/Closed Principle**: New subscribers can be added without modifying publisher code.
     - Establishes dynamic runtime relationships between objects.
 - **Cons**:
     - **Notification Order**: Subscribers are notified in a random order.
+
 ## Structural Patterns
+
 ### Adaptor
 - **Adapter Creation**: An adapter converts one interface to a compatible one, wrapping the incompatible object and managing the conversion.
 - **Use Cases**:
@@ -926,6 +974,7 @@ class Application is
     - Adapter implements the client-compatible interface, handling the conversions needed for the target object.
     - Communication flows through the adapter, ensuring the incompatible object remains unaware of any changes.
 - **Two-way adapters**: Enable conversion in both directions if needed.
+
 ####  Structure
 
 ##### Object adapter
@@ -933,15 +982,17 @@ class Application is
 ![Structure of the Adapter design pattern (the object adapter)](https://refactoring.guru/images/patterns/diagrams/adapter/structure-object-adapter-indexed.png?id=a20b311948b361a058097e5bcdbf067a)
 - adapter receives calls from the client via the client interface and translates them into calls to the wrapped service object in a format it can understand.
 - if the interface of the service class gets changed or replaced, a new adapter class can be created without changing the client code.
+
 ##### Class adapter
 - uses inheritance: the adapter inherits interfaces from both objects at the same time
 ![Adapter design pattern (class adapter)](https://refactoring.guru/images/patterns/diagrams/adapter/structure-class-adapter-indexed.png?id=250b5c485a7dfba7c16b89a9201538fb)
 - adaptation happens within the overridden methods
 - adapter can be used in place of an existing client class
+
 ####  Pseudocode Example
 ![Structure of the Adapter pattern example](https://refactoring.guru/images/patterns/diagrams/adapter/example.png?id=9d2b6857ce256f2c669383ce4df3d0aa)
 
-```Java
+```java
 // Say you have two classes with compatible interfaces:
 // RoundHole and RoundPeg.
 class RoundHole is
@@ -1003,12 +1054,14 @@ hole.fits(large_sqpeg_adapter) // false
 - Create a **client interface** defining how clients interact with the service.
 - Create an **adapter class** implementing the client interface, handling data/interface conversion as needed.
 - **Implement methods** that translate client calls to the service format.
+
 ####  Pros and Cons
 - **Pros**:
     - **Single Responsibility Principle**: Separates conversion logic from core business functions.
     - **Open/Closed Principle**: New adapters can be added without impacting client code.
 - **Cons**:
     - Increases code complexity by introducing additional interfaces and classes.
+
 ### Facade
 - simplified interface to a library, a framework, or any other complex set of classes.
 - provides only essential functionality, hiding unnecessary details.
@@ -1016,6 +1069,7 @@ hole.fits(large_sqpeg_adapter) // false
 	- When you need a straightforward interface for a complex subsystem.
 	- When subsystems grow complex over time, requiring extensive setup or boilerplate code.
 	- To structure subsystems in layers, creating facades as entry points for each layer, reducing coupling.
+
 ####  Structure
 
 ![Structure of the Facade design pattern](https://refactoring.guru/images/patterns/diagrams/facade/structure-indexed.png?id=2da06d6b850701ea15cf72f9d2642fb8)
@@ -1023,12 +1077,13 @@ hole.fits(large_sqpeg_adapter) // false
 - **Additional Facades**: Can separate unrelated features, avoiding a bloated facade.
 - **Complex Subsystem**: Contains numerous objects requiring precise interaction; unaware of the facade.
 - **Client**: Interacts only with the facade, not the subsystem directly.
+
 ####  Pseudocode Example
 - **Facade** pattern simplifies interaction with a complex video conversion framework.
 
 ![The structure of the Facade pattern example](https://refactoring.guru/images/patterns/diagrams/facade/example.png?id=2249d134e3ff83819dfc19032f02eced)
 
-```Java
+```java
 // These are some of the classes of a complex 3rd-party video
 // conversion framework. We don't control that code, therefore
 // can't simplify it.
@@ -1082,12 +1137,14 @@ class Application is
 2. Create a facade class to redirect client requests to the appropriate subsystem objects.
 3. Ensure all client interactions go through the facade.
 4. If the facade becomes complex, extract parts of its behavior into additional facades.
+
 ####  Pros and Cons
 **Pros**:
     - Simplifies the interaction with complex subsystems.
     - Reduces dependencies between client code and subsystem details.
 **Cons**:
     - A facade can become a “god object,” tightly coupled to many classes.
+
 ### Decorator
 - Attach new behaviors to objects by placing these objects inside special wrapper objects that contain the behaviors
 - Use _aggregation_ or _composition_ over inheritance.
@@ -1097,6 +1154,7 @@ class Application is
 - **Use Cases**
 	- Ideal when adding behaviors at runtime without modifying existing code.
 	- Useful for extending `final` classes or when behavior modification via subclassing is impractical.
+
 ####  Structure
 
 ![Structure of the Decorator design pattern](https://refactoring.guru/images/patterns/diagrams/decorator/structure-indexed.png?id=09401b230a58f2249e4c9a1195d485a0)
@@ -1105,12 +1163,13 @@ class Application is
 - **Base Decorator**: References the component interface and delegates work to it.
 - **Concrete Decorators**: Extend the base decorator, implementing additional behaviors by overriding methods.
 - **Client**: Wraps components in multiple decorators, utilizing their combined behaviors.
+
 ####  Pseudocode Example
 - **Decorator** pattern used to compress and encrypt sensitive data independently from the code that actually uses this data.
 
 ![Structure of the Decorator pattern example](https://refactoring.guru/images/patterns/diagrams/decorator/example.png?id=eec9dc488f00c85f50e764323baa723e)
 
-```Java
+```java
 // The component interface defines operations that can be
 // altered by decorators.
 interface DataSource is
@@ -1238,6 +1297,7 @@ class ApplicationConfigurator is
 4. **Base Decorator Class**: Holds reference to the wrapped component and delegates functionality.
 5. **Concrete Decorators**: Implement additional behaviors.
 6. **Client Code**: Creates and composes decorators as needed.
+
 ####  Pros and Cons
 **Pros**:
 - Adds behaviors without subclassing.
@@ -1249,15 +1309,18 @@ class ApplicationConfigurator is
 - Removing specific wrappers from a stack is challenging.
 - Decorator behavior order can impact functionality.
 - Initial setup of decorator layers can appear complex.
+
 # Factory Patterns
+
 ## 1. Factory
 - A general term for functions, methods, or classes that create various entities (objects, files, records).
+
 ## 2. Creation method
 - A method that creates objects using a wrapper around a constructor.
 
 *example - `next` is a creation method:*
 
-```Java
+```java
 class Number {
     private $value;
 
@@ -1279,7 +1342,7 @@ class Number {
 
 *example - `load` method is a static creation method*
 
-```Java
+```java
 class User {
     private $id, $name, $email, $phone;
 
@@ -1303,7 +1366,7 @@ class User {
 
 *example*
 
-```Java
+```java
 class UserFactory {
     public static function create($type) {
         switch ($type) {
@@ -1321,7 +1384,7 @@ class UserFactory {
 - A creational pattern that provides an interface for creating objects, allowing subclasses to modify the object type.
 - Commonly used in base classes, with subclasses extending the creation logic.
 
-```Java
+```java
 abstract class Department {
     public abstract function createEmployee($id);
 

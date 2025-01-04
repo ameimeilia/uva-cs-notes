@@ -34,7 +34,7 @@ My input is 10
 
 *example - implementations of Comparator*
 
-```Java
+```java
 public class StringIgnoreCaseComparator implements Comparator<String> {
     public int compare(String s1, String s2) {
         s1 = s1.toUpperCase();
@@ -48,7 +48,7 @@ public class StringIgnoreCaseComparator implements Comparator<String> {
 - create an instance of a new class when needed
 - no name in global namespace
 
-```Java
+```java
     new Comparator<UVAStudent>() {
         @Override
         public int compare(UVAStudent o1, UVAStudent o2) {
@@ -62,7 +62,7 @@ public class StringIgnoreCaseComparator implements Comparator<String> {
 
 general structure:
 
-```Java
+```java
 (parameters) -> {code block} // don't need parenthesis for 1 parameter
 
 // or
@@ -72,7 +72,7 @@ general structure:
 
 *example*
 
-```Java
+```java
 Comparator<String> ignoreCase = (s1, s2) -> {
     return s1.toUpperCase().compareTo(s2.toUpperCase());
 };
@@ -144,7 +144,7 @@ Comparator<String> ignoreCase = (s1, s2) ->
 
 - we can definite a function in our `StudentManager` class:
 
-```Java
+```java
     public int compareLastNameThenFirstName(UVAStudent s1, UVAStudent s2) {
         if (s1.getLastName().equals(s2.getLastName())) {
             return s1.getFirstName().compareTo(s2.getFirstName());
@@ -156,7 +156,7 @@ Comparator<String> ignoreCase = (s1, s2) ->
 
 - And now we can invoke that function in our lambda body:
 
-```Java
+```java
 public class UVAStudentManager {
     public void sortStudentsLastNameThenFirstName(List<UVAStudent> studentList) {
         studentList.sort(UVAStudentManager::compareLastNameThenFirstName);
@@ -180,7 +180,7 @@ public class UVAStudentManager {
 **Goal:** Get the total population of all states.
 Non-stream method:
 
-```Java
+```java
     public int getTotalPopulation(List<State> stateList) {
         int sum = 0;
         for (State state : stateList) {
@@ -192,7 +192,7 @@ Non-stream method:
 
 Using streams:
 
-```Java
+```java
     public int getTotalPopulation(List<State> stateList) {
         return stateList.stream()
             .mapToInt(state -> state.getPopulation)
@@ -203,7 +203,7 @@ Using streams:
 **Goal:** Get the smallest 5 states, sorted by population.
 Non-stream method:
 
-```Java
+```java
     public List<State> getSmallestNStates(List<State> stateList, int numberOfStates) {
         List<State> safeCopy = new ArrayList<>(stateList);
         safeCopy.sort(new Comparator<State>() {
@@ -222,7 +222,7 @@ Non-stream method:
 
 Using streams:
 
-```Java
+```java
     public List<State> getSmallestNStates(List<State> stateList, int numberOfStates) {
         return stateList.stream()
             .sorted(Comparator.comparing(State::getPopulation()))

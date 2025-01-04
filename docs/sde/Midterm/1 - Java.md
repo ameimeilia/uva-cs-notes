@@ -116,7 +116,7 @@ import java.util.List;
 ## String Arguments
 *example*
 
-```Java
+```java
 public class HelloWho{
     public static void main(String[] args) {
         try {
@@ -151,7 +151,7 @@ Error: This program requires a command line argument for a name. format:
 ## Numeric Arguments
 *example*
 
-```Java
+```java
 public class HelloNTimes{
 	    public static void main(String[] args) {
         try {
@@ -191,7 +191,7 @@ Error: First argument was not an integer. Example:
 ## Multiple Arguments
 *example*
 
-```Java
+```java
 public class MyGCD{
 	public static void main(String[] args) {
         int a = Integer.parseInt(args[0]);
@@ -213,7 +213,7 @@ GCD(144, 81) = 9
 ## Optional Arguments
 *example*
 
-```Java
+```java
     public static void main(String[] args){
 	    // creates List from Array, includes method contains()
         List<String> argList= Arrays.asList(args);

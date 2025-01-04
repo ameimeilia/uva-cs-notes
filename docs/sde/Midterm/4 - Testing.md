@@ -83,7 +83,7 @@ nav_order: 5
 - **Test Method Example**
     - Example:
 
-```Java
+```java
 @Test
 @DisplayName("Testing 3-argument max with Descending order arguments: 3, 2, 1")
 public void testMaxDescendingArguments() {
@@ -110,7 +110,7 @@ public void testMaxDescendingArguments() {
     - Test passes if the expected and actual values match.
     - Example:
 
-```Java
+```java
 assertEquals(3, MaxFunctions.max(3, 2, 1));
 ```
 
@@ -185,7 +185,7 @@ assertEquals(3, MaxFunctions.max(3, 2, 1));
         3. **Check State**: Verify the state of the object to ensure it changed as expected.
 - **Example Test Case**:
 
-```Java
+```java
 @Test
 void testAlreadyChangedSetNumberChanged() {
     NumberChanges nc = new NumberChanges(7, 4);
@@ -199,7 +199,7 @@ void testAlreadyChangedSetNumberChanged() {
     - **Scenario**: Testing behavior when the number does not change (e.g., `nc.setNumber(7)`).
     - **Expected Behavior**: Number remains the same, changes count remains unchanged.
 
-```Java
+```java
 @Test
 void testAlreadyChangedSameNumber() {
 	NumberChanges nc = new NumberChanges(7, 4);
@@ -226,7 +226,7 @@ void testAlreadyChangedSameNumber() {
 ### Setting Up Test Objects
 - **Concept**: Avoid redundant setup code by using setup methods to initialize test objects.
 
-```Java
+```java
 class MySortedListTest {
     MySortedList myAddTestList;
 
