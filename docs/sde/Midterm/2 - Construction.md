@@ -5,6 +5,7 @@ parent: Midterm Notes
 nav_order: 3
 ---
 # Version Control
+
 ## Version Control Usage
 - **safety**: prevents code loss between saves and in the case of hard drive issues
 - **debugging**: step back through commit history to find where bugs first appear
@@ -12,12 +13,14 @@ nav_order: 3
 - **conflict detection**: alerts second committer if their changes conflict with first committer
 - **deployment**: main represents the deployed software project → pushing to main will deploy changes if it passes tests and works correctly
 - **regression testing**: running pre-existing tests to ensure previously working features are still working, adds visibility to the development progress
+
 ## Centralized Repository
 - used by older VCS, ex. Concurrent Versions System (cvs), Apache Subversion (svn)
 - all shared versions of the software are stored in the remote repository
 - **commit**: record and share work in the repository
 - **update**: get work from the repository
 ![[Screenshot 2024-09-05 at 8.55.23 PM.png | center | 350]]
+
 ## Distributed Repository
 - every workstation has a local copy
 - **pull**: get any new changes on the remote repository
@@ -25,17 +28,21 @@ nav_order: 3
 - **commit**: store your current changes in your local repository
 - **push**: send the state of your local repository to the remote repository
 ![[Screenshot 2024-09-05 at 8.53.46 PM.png | center | 350]]
+
 ### `git`
 - most popular VCS
 - treats commits like saves, which allows progress tracking while avoiding pushing non-working/conflicting code
 - includes staging area to select specific files to commit to
 - `git add .`: add all file changes
+
 #### GitHub
 - hosts remote repositories
 - supports various services: Continuous Integration, Regression Testing, Continuous Delivery
 - pull request: proposal to merge changes, used a a safe-guard to prevent committing directly to main
 - allows you to keep track of project commit history, show projects on profile page
+
 # Git Basics
+
 ## .gitignore
 - file that specifies which files not to commit
 - only prevents future commits → **write .gitignore first**
@@ -66,9 +73,11 @@ gradle-app.setting
 1. Github → My Repositories → New → create a starting ReadMe → clone a new repo
 2. create a new project in IntelliJ → select create git repository → push a local repo
 3. from terminal inside empty folder → `git init` → local repository will track added files and changes
+
 ### Adding a git repo to an existing project
 1. In IntelliJ → click “Version Control” → click “create git repository”. → select working folder
 2. from terminal inside working folder → `git init` → use `git add` and `git commit` to add all the files in the folder to the repo
+
 ### Cloning a new repo
 - **first step in homework assignments**
 - downloading an existing remote repository to local machine
@@ -77,22 +86,26 @@ gradle-app.setting
 1. IntelliJ →  File -> New -> Project from Version Control → click Github → log-in to GitHub → select the Repository you want to use
 2. IntelliJ → “Repository URL” → paste `.git`  link
 3. from terminal inside project folder → `git init [url]` where [url] is the git link for the repository to clone
+
 ### Pushing a local repo as a new repository
 - must have at least one commit
 - commit .gitignore file
 
 1. in IntelliJ project with local git repository → go to Git -> GitHub -> Share Project on GitHub → log-in → decide settings, share
 2. create an empty repository on GitHub and get the git link → IntelliJ project with existing repository → check that main branch is named “main” → click the green up-right pointing arrow in the top right for Push → click the blue “define remote” task → paste the .git link in the URL
+
 # Branching
 - default `main` branch is made when creating a git repository
 - reasons to avoid working on main:
 	1. incomplete/untested code can break publicly released software
 	2. will result in conflicts if multiple people are working
 - work in separate branch for each feature then merge into main when done
+
 ### Using IntelliJ’s Git GUI for Branching
 - manage branches: Git → Branches → “+ New Branch”
 - creates and **checks out** new branch
 - handle branch merging: Git → Merge → select branch to have merge in
+
 ### `branch`
 - `git branch`: see all existing branches
 - `git branch my_new_branch`: create new branch
@@ -165,13 +178,17 @@ PS C:\Users\pm8fc\sde-Homeworks\HibernateDemo> git commit -m "Summary of what me
 ```
 
 # Repository operations
+
 ### `add`
 - `git add my_filename`: adds any staged changes to the file to the repository
 - `git add .`: run from root directory, adds all files not filtered by .gitignore
+
 ### `commit`
 - `git commit -m "your message goes here"`: saves all staged changes to the local repository
+
 ### `push`
 - `git push`: pushes all commits in current branch since last push to the remote repository
+
 ### `pull`
 - `git pull`: gets the most recent changes from remote repository for current branch
 - if you have changes that have not been committed and will be overwritten by merge, use `stash`
@@ -185,6 +202,7 @@ git stash pop
 ## Commit hashes
 - git commits are identified /tracked by a unique hexadecimal hash
 - git displays the first 7 characters of the hash; the full hash can be accessed
+
 ## Conflict Resolution
 - conflict occurs when you commit to a branch in the remote repository that someone else has pushed conflicting changes to since your last pull
 - or indirect conflict can occur (ex. changing names of variables) → solve with meaningful commit messages

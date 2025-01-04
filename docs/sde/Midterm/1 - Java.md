@@ -5,6 +5,7 @@ parent: Midterm Notes
 nav_order: 2
 ---
 # Java
+
 ## Compiling
 - high-level source code must be compiled into an executable stored in bytes for the computer to run
 - advantage of .exe for C: can run executable without any tools
@@ -12,6 +13,7 @@ nav_order: 2
 - Java built to address limit of cross-compiling
 - Python is an interpreted language → compiling and running is done at the same time
 - interpreted languages usually less efficient than compiled languages
+
 ## How Java works
 
 ### JDK
@@ -19,23 +21,29 @@ nav_order: 2
 - .class file is **portable** between environments, unlike C
 - .class files run in virtual Java Runtime Environment
 ![An image showing a .java file being compiled into a .class file which is being used by a box labeled Java Runtime Environment, which is running on the computer](https://sde-coursepack.github.io/modules/java/images/3/compiler3.png)
+
 ### JRE
 - JRE included with JDK download, or can be downloaded separately
 - contain core class libraries but can be customized for specialized runtime environments
+
 ### JVM
 - JRE contains Java Virtual Machine which handles direct interactions with host hardware
 - JVM interprets .class byte-code
+
 ### JIT
 - Just In Time complier is a part of JVM that compiles JVM byte-code into native machine code
 - more efficient than interpreting, can be further optimized
+
 ## Why Java is built this way
 - compiling with JDK allows sharing of executables across different OS that can be run with JRE/JVM
 - JIT allows for optimization
 - overall convenience, distributability, portability, and performance
+
 ## JVM: It’s not just for Java anymore
 - JRE can run any compatible .class byte-code, such as code written in Kotlin and Groovy
 - Kotlin is popular in Android community
 - Groovy is used is Gradle as a domain-specific language (DSL)
+
 ## Key takeaways
 - Compiling is taking a source code resource, and producing a bytecode resource designed to run on a particular machine
 - Interpreting is similar to compiling, but is done dynamically at runtime
@@ -43,25 +51,31 @@ nav_order: 2
 - The JRE runs Java programs via a JVM
 - The JVM interprets java bytecode into machine instructions of the underlying hardware
 - The JIT is used to compile the java bytecode into machine instructions for the underlying hardware at runtime, and boosts optimization and efficiency.
+
 # Terminal
+
 ## Terminal
 - `ls`: prints a list of the current directory contents
 - `cd`: changes directory
 - `Tab`: auto-complete
 - `..`: parent folder
+
 ## Getting started with Java Commands
 - `java --version`: check version of Java
 - `javac`: compiles java file(s)
 - files that are **dependencies** must be compiled first/same time
 - `java`: runs a program
+
 ### .Jar files
 - contains several files that can be run as a single Java class
 - `jar cf [name].jar [folder]*.class`: creates a `.jar` file with the files in `[folder]`
 - `jar cfe [name].jar [folder].Main [folder]/*.class`: specifies which file to run when running the `.jar` file, `e` for entry point
 - `java -jar [name].jar`: runs a `.jar` file
+
 # Packages
 
 ## Importing packages
+
 ### A note on import statements
 - as a general rule, it’s fine to just use `import java.util.*` whenever you’re using anything in the java.util library
 - only import individual classes in the case of a name conflict
@@ -74,23 +88,31 @@ import java.util.List;
 
 ## Creating packages
 - `package [name of package]`; package declaration at top of file creates a sub-folder in the source code director
+
 ### Sharing code
 - classes that aren’t in a package use the **default namespace**
 - using packages allows other users to import only what is relevant when sharing code to avoid name conflicts
+
 ### Design Considerations
 - packages are useful for modularity and reusing code that has a clear purpose
+
 ## Naming packages
 - when naming packages, use “reverse Internet domain name”
 - ex. cs.virginia.edu becomes `edu.virginia.cs.[project-name]`
+
 ## Adding Jars as Libraries
 - process for most IDEs: copy/paste library as `.jar` file, “Add as Library”
+
 # Command Line Arguments
+
 ## main(String[] args)
 - `String[] args` used for command-line arguments
 - arguments are split by whitespace, `args[0]` is first argument after program name
+
 ### Why do we want these?
 - allows user to input information without editing source code/using System.in
 - important for program-to-program communication
+
 ## String Arguments
 *example*
 
@@ -223,6 +245,7 @@ java edu.virginia.cs.commandline.IsLeapYear 1900 here are some unused arguments 
 - optional arguments generally have 2 forms:
 	1. short form: with 1 hyphen, ex. `-j`
 	2. long form: with 2 hyphens, ex. `--julian`
+
 ### Optional Parameter Arguments
 *example*
 

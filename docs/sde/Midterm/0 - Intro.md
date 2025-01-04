@@ -5,21 +5,26 @@ parent: Midterm Notes
 nav_order: 1
 ---
 # Intro
-### Scale
+## Scale
 - “A master craftsperson must know how to use all kinds of tools, and must constantly learn the usage of new tools.” !!!!
 - **enterprise software**: large software systems built by teams that respond to change over time
 - “small scale ad hoc problem-solving is **fundamentally different** from building larger, sustainable, systematic solutions to problems
-### Failures
+
+## Failures
 - “Software fails when the defect _isn’t found_.”
-### Complexity
+
+## Complexity
 - “software is _essentially_ complex”
 - **essential difficulties**: intrinsic to developing software
 - **accidental difficulties**: emerge due to circumstance
 - essential difficulties will always exist despite improvements to reduce accidental difficulties
-#### No Silver Bullet
-##### Introduction
+
+## No Silver Bullet
+
+### Introduction
 - “There is no single development, in either technology or management technique, which by itself promises even one order-of-magnitude improvement within a decade in productivity, in reliability, in simplicity.”
-##### Does It Have To Be Hard? - Essential Difficulties
+
+### Does It Have To Be Hard? - Essential Difficulties
 - specification, design, and testing of the conceptual construct is the essence of software
 - inherent properties of software essence:
 	1. **complexity**
@@ -36,7 +41,8 @@ nav_order: 1
 	4. **invisibility**
 		- software is inherently un-visualizable
 		- impedes design and communication process
-##### Past Breakthroughs Solved Accidental Difficulties
+
+### Past Breakthroughs Solved Accidental Difficulties
 - major three steps in software technology:
 	1. **high level languages**
 		- embodies the conceptual construct while avoiding machine-level concerns
@@ -44,7 +50,8 @@ nav_order: 1
 		- much more efficient compared to batch processing
 	3. **unified programming environments**
 		- allowed conceptual structures to easily call, feed, and use one another
-##### Hopes for the Silver
+
+### Hopes for the Silver
 1. **Ada and other high-level language advances**
 	- modern software design techniques: modularization, ADT, hierarchical structures
 2. **OOP**
@@ -68,7 +75,8 @@ nav_order: 1
 	- biggest problems have already been solved
 9. **workstations**
 	- cannot speed up the thinking process
-##### Promising Attacks on the Conceptual Essence
+
+### Promising Attacks on the Conceptual Essence
 1. **buy vs. build**
 	- buying from software mass market instead of building from new
 2. **requirements refinement and rapid prototyping**
@@ -78,12 +86,15 @@ nav_order: 1
 	- top-down growing, start with running system then develop subprograms
 4. **great designers**
 	- identify great designers and nurture their growth
-### Improving
+
+## Improving
 - “It’s the **struggle** that makes you stronger.”
 - “you can never truly succeed if you don’t give yourself a significant chance to fail, and rise above it”
-### Software Quality
+
+## Software Quality
 - ISO 9126: internal standard for the evaluation of *software quality*
-#### External Quality
+
+### External Quality
 - quality of software from the **stakeholder** perspective
 - **stakeholders**: anyone affected by the software
 - external quality measures:
@@ -92,7 +103,8 @@ nav_order: 1
 	3. **usability**: the amount of effort needed for the customer to use the software
 	4. **efficiency**: the resources and extent they are used while operating
 	5. **portability**: ability for the software to be transferred from one environment to another
-#### Internal Quality
+
+### Internal Quality
 - quality of software from the **developer** perspective
 - software **maintenance** achieved through **design**:
 	1. **analyzability**: extent to which the software construction can be understood
