@@ -135,6 +135,7 @@ tricks:
 - information about the address causing the fault (e.g. special register with memory address accessed)
 - (by default) rerun faulting instruction when returning from exception
 - precise exceptions: no side effects from faulting instruction or after (e.g. pushq that caused fault did not change %rsp before fault)
+
 ## Page Tables in Memory
 - page tables have to be encoded into memory
 <div style="text-align: center;">
@@ -171,6 +172,7 @@ tricks:
 void *result;
 error_code = posix_memalign(&result, alingment, size);
 ```
+
 - allocates `size` bytes
 - chooses address that is multiple of `alignment`
 - `error_code` indicates if out-of-memory, etc.

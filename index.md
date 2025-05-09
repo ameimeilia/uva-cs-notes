@@ -26,4 +26,4 @@ nav_order: 1
 - CS 3100 (DSA2), Pettit
 
 ### Fall 2025
-- CS 3120 (DMT2), TBD
+- CS 3120 (DMT2), Floryan

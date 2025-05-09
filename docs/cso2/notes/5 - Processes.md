@@ -32,6 +32,7 @@ essential operations:
 <div style="text-align: center;">
   <img src="{{ '/images/Screenshot 2024-09-22 at 11.30.08 AM.png' | relative_url}}" alt="Screenshot">
 </div>
+
 ## `fork`
 *example - outputs depend on timing*
 <div style="text-align: center;">
@@ -42,6 +43,7 @@ essential operations:
 <div style="text-align: center;">
   <img src="{{ '/images/Screenshot 2024-09-22 at 2.30.11 PM.png' | relative_url}}" alt="Screenshot" width="500">
 </div>
+
 ## `exec`
 - `exec*`: replaces current program with new program
 	- `*`: multiple variants
@@ -59,11 +61,13 @@ essential operations:
 <div style="text-align: center;">
   <img src="{{ '/images/Screenshot 2024-09-22 at 3.13.10 PM.png' | relative_url}}" alt="Screenshot">
 </div>
+
 ## Why `fork/exec`?
 - alternative: only have one function to spawn a new program:
 	- Windows `CreateProcess()`; POSIX’s `posix_spawn`
 - API needs to be more complicated to set new program state
 - OS is simpler, doesn’t need intermediate child step
+
 ## `wait/waitpid`
 - `pid_t waitpid(pid_t pid, int * status, int options)`
 - waits for a child process (with pid=`pid`) to finish
@@ -92,6 +96,7 @@ essential operations:
 <div style="text-align: center;">
   <img src="{{ '/images/Screenshot 2024-09-22 at 4.01.04 PM.png' | relative_url}}" alt="Screenshot">
 </div>
+
 ## POSIX command-line features
 - searching for programs uses the `PATH` variable → `/bin`, `/usr/bin`, `.`
 	- `ls -l` → `/bin/ls -l`
@@ -135,6 +140,7 @@ process->files[file_descriptor]
 - closes the file descriptor, deallocating the array index
 - does not affect other file descriptors that point to the same object
 - resources deallocated when the last file descriptor for an open file is closed
+
 ## Redirecting with `exec`
 - perform redirection after forking
 <div style="text-align: center;">
