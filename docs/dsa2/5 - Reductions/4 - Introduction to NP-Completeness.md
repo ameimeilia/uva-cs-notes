@@ -16,18 +16,18 @@ nav_order: 4
 - Given a new encryption algorithm, how do we show that it’s actually “hard?”
 
 ## DMT 1 Review
-- Conjunction: AND $\wedge$
-- Disjunction: OR $\vee$
+- Conjunction: AND \( \wedge \)
+- Disjunction: OR \( \vee \)
 - DeMorgan’s Law:
-	- $\neg (a \vee b) == \neg a \wedge \neg b$
-	- $\neg(a \wedge b) == \neg a \vee \neg b$
+	- \( \neg (a \vee b) == \neg a \wedge \neg b \)
+	- \( \neg(a \wedge b) == \neg a \vee \neg b \)
 
 ## Background: Satisfiability (SAT)
 - Given a boolean expression, can we find an assignment of true/false values to the variables such that the entire expression is true?
 - Examples:
-	- $x_1 \wedge (x_2 \vee \neg x_3) \wedge (\neg x_1 \vee x_3) \wedge (x_2 \vee \neg x_3)$
-		- Yes, $x_1,x_2,x_3$ all true
-	- $x_1 \wedge (x_2 \vee \neg x_3) \wedge (\neg x_1 \vee x_3) \wedge (\neg x_2 \vee \neg x_3)$
+	- \( x_1 \wedge (x_2 \vee \neg x_3) \wedge (\neg x_1 \vee x_3) \wedge (x_2 \vee \neg x_3) \)
+		- Yes, \( x_1,x_2,x_3 \) all true
+	- \( x_1 \wedge (x_2 \vee \neg x_3) \wedge (\neg x_1 \vee x_3) \wedge (\neg x_2 \vee \neg x_3) \)
 		- No, there assignment of true/false that will satisfy this equation
 - These equations are in **conjunction normal form**: a conjunction of disjunctions
 	- Keep this as a standard format
@@ -92,7 +92,7 @@ def check_uva_userid2(what):
 	- NFAs have to be converted for computers (deterministic) computers to use them
 - Sometimes converting an polynomial-time NFA yields an exponential time DFA
 
-- empty ($\epsilon$) transitions: transition between states without consuming a character
+- empty (\( \epsilon \)) transitions: transition between states without consuming a character
 ![[Screenshot 2025-04-20 at 5.42.02 PM.png | center | 250]]
 
 ### Automata Definitions
@@ -105,15 +105,15 @@ def check_uva_userid2(what):
 
 ### Automata and Languages
 - How would you write an automata that can accept strings with **some** positive number of a’s followed by some positive number of b’s?
-	- Expressed as $a^+b^+$
+	- Expressed as \( a^+b^+ \)
 ![[Screenshot 2025-04-20 at 5.50.54 PM.png | center | 100]]
 
 - How would you write an automata that can accept strings with some positive number of a’s followed by **the same number** of b’s?
-	- Expressed as $a^nb^n$
-- Impossible, would need a infinite automata since a finite automata of $n$ states cannot accepts strings of $n+k$ a’s
+	- Expressed as \( a^nb^n \)
+- Impossible, would need a infinite automata since a finite automata of \( n \) states cannot accepts strings of \( n+k \) a’s
 ![[Screenshot 2025-04-20 at 6.31.02 PM.png | center | 100]]
 
-### Accepting $a^n b^n$
+### Accepting \( a^n b^n \)
 - To accept these strings, you need **memory**: how many a’s have been accepted
 - This is done via a stack
 	- On each a, push a value onto the stack
@@ -123,7 +123,7 @@ def check_uva_userid2(what):
 - The range of languages (strings) that these can produce (accept) are called **context-free** languages
 
 ### Even More Powerful Automata
-- What about $a^n b^n c^n$?
+- What about \( a^n b^n c^n \)?
 - Need a **linear-bounded automata**
 	- An automata with a limited form of memory
 - The range of languages (strings) that these can produce (accept) are called **context-sensitive** languages

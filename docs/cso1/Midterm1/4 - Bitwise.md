@@ -22,7 +22,7 @@ nav_order: 4
   <img src="{{ '/images/Screen Shot 2024-01-26 at 2.13.32 PM.png' | relative_url }}" alt="Screenshot" width="300">
   <img src="{{ '/images/Screen Shot 2024-01-26 at 2.17.43 PM.png' | relative_url }}" alt="Screenshot" width="300">
 </div>
-- to find the middle: $floor( (2^n - 1) / 2 )$
+- to find the middle: \( floor( (2^n - 1) / 2 ) \)
 - to convert from decimal to bias: add N to the decimal value then convert as if unsigned
 - from original to biased: representation = original + bias
 - from biased to original: original = representation - bias
@@ -30,7 +30,7 @@ nav_order: 4
   <img src="{{ '/images/Screen Shot 2024-05-03 at 5.10.34 PM.png' | relative_url }}" alt="Screenshot" width="500">
 </div>
 
-**Twos complement**: top most bit represents negative $-2^n$
+**Twos complement**: top most bit represents negative \( -2^n \)
 - works with ripple carry adder
 - to convert from between signs:
 	1. flip the bits
@@ -42,7 +42,7 @@ nav_order: 4
   <img src="{{ '/images/Screen Shot 2024-01-26 at 2.21.23 PM.png' | relative_url }}" alt="Screenshot" width="300">
 </div>
 
-**Overflow**: if $\oplus + \oplus = \circleddash, or \circleddash + \circleddash = \oplus$
+**Overflow**: if \( \oplus + \oplus = \circleddash, or \circleddash + \circleddash = \oplus \)
 - carry is not considered overflow
 <div>
   <img src="{{ '/images/Screen Shot 2024-01-28 at 4.50.12 PM.png' | relative_url }}" alt="Screenshot" width="200">

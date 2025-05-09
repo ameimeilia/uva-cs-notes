@@ -161,7 +161,7 @@ Let’s trace it through, starting with the `callq evaluate`, stalling anytime 
     |---|---|---|---|---|
     |_stalled_|_nop_|_nop_|_nop_|je|
     
-12. The `je` has finally finished! We now know that we _don’t_ jump (the `cmpq` was comparing `$1` and `%rdi`, an argument we’re assuming was not `1`), so we fetch the next instruction: `movl $1,%ecx`.
+12. The `je` has finally finished! We now know that we _don’t_ jump (the `cmpq` was comparing `\( 1` and `%rdi`, an argument we’re assuming was not `1`), so we fetch the next instruction: `movl  \)1,%ecx`.
     
     |   |   |   |   |   |
     |---|---|---|---|---|

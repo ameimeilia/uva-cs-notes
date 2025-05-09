@@ -14,11 +14,11 @@ nav_order: 5
 ![[Screenshot 2025-05-08 at 9.15.34 PM.png | center | 500]]
 
 ## Topological Sort
-- A topological sort of a **directed acyclic graph** $G = (V,E)$ is a permutation of V such that if $(u,v) \in E$ then $u$ is before $v$ in the permutation
+- A topological sort of a **directed acyclic graph** \( G = (V,E) \) is a permutation of V such that if \( (u,v) \in E \) then \( u \) is before \( v \) in the permutation
 - Idea: list in reverse order by finish time
 ![[Screenshot 2025-02-17 at 11.09.16 AM.png | center | 400]]
 
-> [!example] Topological Sort Pseudocode
+> [!EXAMPLE] Topological Sort Pseudocode
 > ```Python
 > def top_sort(graph): # has loop like dfs_sweep
 > 	seen = [False, False, False, ...] # length matches |V|
@@ -51,14 +51,14 @@ nav_order: 5
 ![[Screenshot 2025-05-08 at 9.18.49 PM.png | center | 500]]
 
 ### Decomposing a Digraph into SCCs
-1. Call `dfs_sweep(G)` to find finishing times $u.f$ for each vertex $u$ in $G$
-2. Compute $G^T$, the transpose of digraph $G$ (same nodes, edges reversed)
-3. Call `dfs_sweep(G^T)` but do the recursive calls on nodes in the oder of decreasing $u.f$ from Step 1 (start with the vertex with the largest finishing time in $G$’s DFS tree)
+1. Call `dfs_sweep(G)` to find finishing times \( u.f \) for each vertex \( u \) in \( G \)
+2. Compute \( G^T \), the transpose of digraph \( G \) (same nodes, edges reversed)
+3. Call `dfs_sweep(G^T)` but do the recursive calls on nodes in the oder of decreasing \( u.f \) from Step 1 (start with the vertex with the largest finishing time in \( G \)’s DFS tree)
 4. The DFS forest produced in Step 3 is the set of SCCs
 ![[Screenshot 2025-05-08 at 9.25.15 PM.png | center | 500]]
 
 ### Transpose and Finish Times
 - A digraph and its transpose have the same SCCs
-	- Use the fact that edge-directions are reversed in $G^T$ to stope DFS from leaving an SCC
-- In $G^T$, find SCCs in reverse order of finish time
-	- Essentially a topological sort for $G^{SCC}$
+	- Use the fact that edge-directions are reversed in \( G^T \) to stope DFS from leaving an SCC
+- In \( G^T \), find SCCs in reverse order of finish time
+	- Essentially a topological sort for \( G^{SCC} \)

@@ -17,7 +17,7 @@ nav_order: 2
 	2. remove it and all conflicting events
 	3. repeat until all events removed, return solution
 
-> [!example] Interval Scheduling Pseudocode
+> [!EXAMPLE] Interval Scheduling Pseudocode
 > ```Python
 > sort intervals by finish time
 > 
@@ -32,24 +32,24 @@ nav_order: 2
 - show exchanging an item from an arbitrary optimal solution with your greedy choice makes the new solution no worse
 
 - **claim**: earliest ending interval is always part of some optimal solution
-- let $OPT_{i,j}$ be an optimal solution for time range $[i,j]$
-- let $a*$ be the first interval in $[i,j]$ to finish overall
-- if $a* \in OPT_{i,j}$ then the claim holds
-- else if $a* \notin OPT_{i,j}$, let $a$ be the first interval to end in $OPT_{i,j}$
-	- by definition, $a*$ ends before $a$, and therefore does not conflict with any other events in $OPT_{i,j}$
-	- therefore, $OPT_{i,j} - {a} + {a*}$ is also an optimal solution
+- let \( OPT_{i,j} \) be an optimal solution for time range \( [i,j] \)
+- let \( a* \) be the first interval in \( [i,j] \) to finish overall
+- if \( a* \in OPT_{i,j} \) then the claim holds
+- else if \( a* \notin OPT_{i,j} \), let \( a \) be the first interval to end in \( OPT_{i,j} \)
+	- by definition, \( a* \) ends before \( a \), and therefore does not conflict with any other events in \( OPT_{i,j} \)
+	- therefore, \( OPT_{i,j} - {a} + {a*} \) is also an optimal solution
 	- thus the claim holds
 
 ## Minimum Spanning Trees
 ### Spanning Tree
-- A tree $T = (V_T, E_T)$ is a **spanning tree** for an **undirected** graph $G=(V,E)$ if $V_T = V$, $E_T \subseteq E$
-- $T$ connects or “spans” all the nodes in $G$
+- A tree \( T = (V_T, E_T) \) is a **spanning tree** for an **undirected** graph \( G=(V,E) \) if \( V_T = V \), \( E_T \subseteq E \)
+- \( T \) connects or “spans” all the nodes in \( G \)
 ![[Screenshot 2025-03-23 at 6.13.13 PM.png | center | 400]]
 - Each spanning tree has a different total **cost** (sum of edge weights included in tree)
 - The **minimum spanning tree** is the spanning tree with lowest overall cost
 
 ### Minimum Spanning Tree
-- A tree $T = (V_T, E_T)$ is a **minimum spanning tree** for an **undirected** graph $G=(V,E)$ if $T$ is a spanning tree of minimal cost
+- A tree \( T = (V_T, E_T) \) is a **minimum spanning tree** for an **undirected** graph \( G=(V,E) \) if \( T \) is a spanning tree of minimal cost
 
 ### MST Algorithms
 - Prim’s Algorithm
@@ -60,17 +60,17 @@ nav_order: 2
 	- Utilizes an interesting data structure for manipulating sets
 
 #### Prim’s Algorithm
-1. Start with an empty tree $T$ and add the source to $T$
-2. Repeat $|V| - 1$ times:
-	- At each step, add the node with the minimum connecting edge to a node in $T$
+1. Start with an empty tree \( T \) and add the source to \( T \)
+2. Repeat \( |V| - 1 \) times:
+	- At each step, add the node with the minimum connecting edge to a node in \( T \)
 
 **Implementation**:
-- Maintain nodes **not in** $T$ in a min-heap (priority queue)
-- Find the next closest node $v$ by extracting min from priority queue
-- Each time node $v$ is added to the tree, update keys for neighbors still in min-heap
+- Maintain nodes **not in** \( T \) in a min-heap (priority queue)
+- Find the next closest node \( v \) by extracting min from priority queue
+- Each time node \( v \) is added to the tree, update keys for neighbors still in min-heap
 - Repeat until no nodes left in min-heap
 
-> [!example] Prim’s Algorithm Implementation Pseudocode
+> [!EXAMPLE] Prim’s Algorithm Implementation Pseudocode
 >```Python
 >initialize d_v = infinity for each node v
 >add all nodes v in V to the priority queue PQ, using d_v as the key
@@ -83,11 +83,11 @@ nav_order: 2
 >			u.parent = v
 >```
 
-- Runtime: $O(|V|log|V| + |E|log|V|) = O(|E|log|V|)$
+- Runtime: \( O(|V|log|V| + |E|log|V|) = O(|E|log|V|) \)
 
 #### Kruskal’s Algorithm
-1. Start with an empty set of edges $T$
-2. Repeatedly add to $T$ the lowest-weight edge that does not create a cycle (stop when we’ve added $n-1$ edges)
+1. Start with an empty set of edges \( T \)
+2. Repeatedly add to \( T \) the lowest-weight edge that does not create a cycle (stop when we’ve added \( n-1 \) edges)
 
 **Implementation**: iterate over each of the edges in the graph (sorted by weight), and maintain nodes in a **union-find** (also called **disjoint-set**) data structure:
 - Data structure that tracks elements partitioned into different sets
@@ -95,9 +95,9 @@ nav_order: 2
 - **Find**: given an element, return the index of the set it belongs to
 - Both “union” and “find” operations are very fast
 
-- Runtime: $O(|E|log|E|) = O(|E|log|V|), |E| ≤ |V|^2 \implies log|E| = O(log|V|)$
+- Runtime: \( O(|E|log|E|) = O(|E|log|V|), |E| ≤ |V|^2 \implies log|E| = O(log|V|) \)
 
-> [!example] Kruskal’s Algorithm Implementation Pseudocode
+> [!EXAMPLE] Kruskal’s Algorithm Implementation Pseudocode
 >```Python
 >Let EL be the set of edges sorted ascending by weight
 >Consider each vertex to be in tree of size 1
@@ -114,9 +114,9 @@ nav_order: 2
 - An Abstract Data Type for a collection of sets of any kind of item, where an item can only belong to one of the sets
 	- Assume each item is identified by a unique integer value
 - Supports the following operations:
-	- `void makeSet(int n)`: construct $n$ independent sets
-	- `int findSet(int i)`: given $i$, which set does $i$ belong to?
-	- `void union(int i, int j)`: merge sets containing $i$ and $j$
+	- `void makeSet(int n)`: construct \( n \) independent sets
+	- `int findSet(int i)`: given \( i \), which set does \( i \) belong to?
+	- `void union(int i, int j)`: merge sets containing \( i \) and \( j \)
 
 ### Represent Sets as Trees
 - In our implementation, we’ll represent each set as a tree
@@ -127,7 +127,7 @@ nav_order: 2
 
 ### Operations
 ###### `void makeSet(int n)`
-- Solution: store as an array of size $n$, where each location stores the label for that set
+- Solution: store as an array of size \( n \), where each location stores the label for that set
 - node # is vertex ID, label is parent node
 ![[Screenshot 2025-03-23 at 6.44.03 PM.png | center | 350]]
 

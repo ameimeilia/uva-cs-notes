@@ -33,8 +33,8 @@ nav_order: 6
 
 ## Address Space Size
 - amount that can be addressed, based on number of unique addresses
-- eg. 32-bit virtual address = $2^{32}$ byte virtual address space
-- eg. 20-bit physical address = $2^{20}$ byte physical address space
+- eg. 32-bit virtual address = \( 2^{32} \) byte virtual address space
+- eg. 20-bit physical address = \( 2^{20} \) byte physical address space
 
 *exercise - page table size*
 <div style="text-align: center;">

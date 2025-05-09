@@ -14,7 +14,7 @@ nav_order: 2
 
 ### Energy of a Seam
 - Sum of the energies of each pixel
-	- $e(p)$ = energy of pixel $p$
+	- \( e(p) \) = energy of pixel \( p \)
 - Many choices for pixel energy
 	- Change of gradient (how much the color of this pixel differs from its neighbors)
 	- Shortest path (more color change means more distance)
@@ -23,9 +23,9 @@ nav_order: 2
 - Goal: find least-energy seam to remove
 
 ### 1. Identify the Recursive Structure of the Problem
-- Let $S(i,j)$ = least energy seam from the bottom of the image up to pixel $p_{i,j}$
-- Assume we know the least energy seams for all of row $n-1$ (i.e. we know $S(n-1,l)$ for all $l$)
-- Want to delete the least energy seam going tom bottom to top, so delete $min^m_{k=1}(S(n,k))$
+- Let \( S(i,j) \) = least energy seam from the bottom of the image up to pixel \( p_{i,j} \)
+- Assume we know the least energy seams for all of row \( n-1 \) (i.e. we know \( S(n-1,l) \) for all \( l \))
+- Want to delete the least energy seam going tom bottom to top, so delete \( min^m_{k=1}(S(n,k)) \)
 ![[Screenshot 2025-03-27 at 12.23.42 AM.png | center | 400]]
 
 ![[Screenshot 2025-03-27 at 12.24.01 AM.png | center | 350]]
@@ -35,11 +35,11 @@ nav_order: 2
 
 ### Repeated Seam Removal
 - only need to update pixels dependant on the removed seam
-- $2n$ pixels change → $O(2n)$ to update pixels, $O(n+m)$ to find min+backtrack
+- \( 2n \) pixels change → \( O(2n) \) to update pixels, \( O(n+m) \) to find min+backtrack
 
 ## Longest Common Subsequence
-- Given 2 sequences $X$ and $Y$, find the length of their longest common subsequence
-- Brute force: compare every subsequence of $X$ with $Y$, $\Omega(2^n)$
+- Given 2 sequences \( X \) and \( Y \), find the length of their longest common subsequence
+- Brute force: compare every subsequence of \( X \) with \( Y \), \( \Omega(2^n) \)
 
 ### 1. Identify the Recursive Structure of the Problem
 ![[Screenshot 2025-03-27 at 1.02.13 AM.png | center | 500]]
@@ -50,7 +50,7 @@ nav_order: 2
 ![[Screenshot 2025-03-31 at 11.38.53 PM.png | center | 500]]
 
 ### 3. Solve in a Good Order
-- To fill in cell ($i,j$) we need cells ($i-1,j-1$), ($i-1,j$), and ($i,j-1$)
+- To fill in cell (\( i,j \)) we need cells (\( i-1,j-1 \)), (\( i-1,j \)), and (\( i,j-1 \))
 - Fill from top → bottom, left → right
 ![[Screenshot 2025-03-31 at 11.54.50 PM.png | center | 400]]
 
@@ -70,7 +70,7 @@ LCS-Length(X,Y)    # Y for M's rows, X for its columns
 	return M[n,m]    # return LCS length for Y and X
 ```
 
-- Runtime: $O(n \cdot m)$
+- Runtime: \( O(n \cdot m) \)
 
 ### Reconstructing the LCS
 1. Start from bottom right
@@ -92,39 +92,39 @@ LCS-Length(X,Y)    # Y for M's rows, X for its columns
 
 ### Problem Statement
 - Given:
-	- A list of $n$ precincts: $p_1,p_2,…,p_n$
-	- Each containing $m$ voters
-	- Total of $m \cdot n$ voters
+	- A list of \( n \) precincts: \( p_1,p_2,…,p_n \)
+	- Each containing \( m \) voters
+	- Total of \( m \cdot n \) voters
 - Output:
-	- Districts $D_1, D_2 \in \{p_1,p_2,…,p_n\}$
-	- Where $|D_1| = |D_2| = \frac{m \cdot n}{2}$
-	- $S(D_1) > \frac{m \cdot n}{4}$ and $S(D_2) > \frac{m \cdot n}{4}$
-		- $S(D_1)$ is the number (size) of voters of the target party in $D_i$
-		- $S(D_1) > \frac{m \cdot n}{4}$ means the target party holds the majority in $D_i$
+	- Districts \( D_1, D_2 \in \{p_1,p_2,…,p_n\} \)
+	- Where \( |D_1| = |D_2| = \frac{m \cdot n}{2} \)
+	- \( S(D_1) > \frac{m \cdot n}{4} \) and \( S(D_2) > \frac{m \cdot n}{4} \)
+		- \( S(D_1) \) is the number (size) of voters of the target party in \( D_i \)
+		- \( S(D_1) > \frac{m \cdot n}{4} \) means the target party holds the majority in \( D_i \)
 	- “Failure” if no possible solution
 
 ### Consider the last precinct
 ![[Screenshot 2025-04-01 at 12.12.17 AM.png | center | 600]]
 
 ### 1. Define Recursive Structure
-- $S(j, k, x, y) =$ True if:
-	- from the first $j$ precincts
-	- $k$ are assigned to $D_1$
-	- exactly $x$ vote for R in $D_1$
-	- exactly $y$ vote for R in $D_2$
+- \( S(j, k, x, y) = \) True if:
+	- from the first \( j \) precincts
+	- \( k \) are assigned to \( D_1 \)
+	- exactly \( x \) vote for R in \( D_1 \)
+	- exactly \( y \) vote for R in \( D_2 \)
 
-#### Two Ways to Satisfy $S(j,k,x,y)$
+#### Two Ways to Satisfy \( S(j,k,x,y) \)
 ![[Screenshot 2025-04-08 at 4.40.47 PM.png | center | 600]]
 
 ### Final Algorithm
-- True entry: all $n$ precincts have been assigned, $\frac{n}{2}$ precincts are in $D_1$, majority vote in both precincts 
+- True entry: all \( n \) precincts have been assigned, \( \frac{n}{2} \) precincts are in \( D_1 \), majority vote in both precincts 
 ![[Screenshot 2025-04-08 at 4.43.51 PM.png | center | 500]]
 
 ### Runtime
-- Overall runtime: $O(n^4m^2)$
-- Input: list of precincts (size $n$), number of voters (integer $m$)
-- Runtime depends on the value of $m$, not the size of $m$
+- Overall runtime: \( O(n^4m^2) \)
+- Input: list of precincts (size \( n \)), number of voters (integer \( m \))
+- Runtime depends on the value of \( m \), not the size of \( m \)
 	- Run time is exponential in size of input
-		- Input size is $n + |m| = n + log(m)$
+		- Input size is \( n + |m| = n + log(m) \)
 - Note: Gerrymandering is NP-Complete
 ![[Screenshot 2025-04-08 at 4.46.08 PM.png | center | 400]]

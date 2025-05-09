@@ -138,7 +138,7 @@ void MoveFile(Dir *from_dir, Dir *to_dir, string filename) {
 1. **mutual exclusion**
 2. **hold and wait**: thread holding a resource waits to acquire another resource
 3. **no preemption of resources**: resources are only released voluntarily
-4. **circular wait**: there exists a set $\{T_1,…T_n\}$ of waiting threads such that $T_1$ is waiting for a resource hold by $T_2$, … $T_n$ is waiting for a resource hold by $T_1$
+4. **circular wait**: there exists a set \( \{T_1,…T_n\} \) of waiting threads such that \( T_1 \) is waiting for a resource hold by \( T_2 \), … \( T_n \) is waiting for a resource hold by \( T_1 \)
 
 *exercise*
 <div style="text-align: center;">

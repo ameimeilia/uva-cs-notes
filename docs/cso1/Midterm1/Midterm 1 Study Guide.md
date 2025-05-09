@@ -63,7 +63,7 @@ nav_order: 16
   <img src="{{ '/images/Screen Shot 2024-05-03 at 5.10.34 PM.png' | relative_url }}" alt="Screenshot" width="500">
 </div>
 
-**Twos Complement**: top most bit represents negative $-2^n$
+**Twos Complement**: top most bit represents negative \( -2^n \)
 <div style="text-align: center;">
   <img src="{{ '/images/Screen Shot 2024-05-03 at 5.14.03 PM.png' | relative_url }}" alt="Screenshot" width="500">
 </div>

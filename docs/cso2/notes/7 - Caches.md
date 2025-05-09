@@ -126,11 +126,11 @@ double computeMean(int length, double *values) {
 **Example Replacement Policies**
 1. least recently used
 	- takes advantage of temporal locality
-	- at least $[log_2(E!)]$ bits per set for $E$-way cache
+	- at least \( [log_2(E!)] \) bits per set for \( E \)-way cache
 2. approximations of least recently used
 	- implementing least recently used is expensive
 	- really just need to “avoid recently used” - much faster/simpler
-	- good approximations: $E$ to $2E$ bits
+	- good approximations: \( E \) to \( 2E \) bits
 3. first-in, first-out
 	- counter per set - where to replace next
 4. (pseudo-) random
@@ -139,7 +139,7 @@ double computeMean(int length, double *values) {
 
 **Terminology**
 1. **direct-mapped**: one block per set
-2. **$E$-way set associative**: $E$ blocks per set, $E$ ways in the cache
+2. **\( E \)-way set associative**: \( E \) blocks per set, \( E \) ways in the cache
 3. **fully-associative**: one set total (everything in one set)
 
 **TIO Formula Update**

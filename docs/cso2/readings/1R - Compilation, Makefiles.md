@@ -148,7 +148,7 @@ bye.o: bye.c bye.h
 *example* - many makefiles will include a command like
 ```
 %.o: %.c %.h config.h
-    $(CC) -c $(CFLAGS) $< -o $@
+    \( (CC) -c  \)(CFLAGS) \( < -o  \)@
 ```
 <div style="text-align: center;">
   <img src="{{ '/images/Screenshot 2024-08-29 at 4.30.53 PM.png' | relative_url}}" alt="Screenshot">

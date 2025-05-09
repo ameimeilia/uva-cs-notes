@@ -54,7 +54,7 @@ struct height3 {
 
 struct height3 *root = /* ... */
 ```
-- This tree has the ability to store $16^4 = 65,536$ `PAYLOAD` values using a total of $1+16^1+16^2+16^3 = 1+16+256+4,096=4,369$ pointers
+- This tree has the ability to store \( 16^4 = 65,536 \) `PAYLOAD` values using a total of \( 1+16^1+16^2+16^3 = 1+16+256+4,096=4,369 \) pointers
 
 - The tree can be accessed like an array using bit masks
 *example - function to access data*

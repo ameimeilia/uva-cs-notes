@@ -105,7 +105,7 @@ nav_order: 10
 - 32-bit numbers
 - *example*: `128.143.67.11`
 	- four 8-bit decimal values separated by `.`
-	- same as: $128 \cdot 256^3 + 142 \cdot 256^2 + 67 \cdot 256 + 11 = 2 156 782 459$
+	- same as: \( 128 \cdot 256^3 + 142 \cdot 256^2 + 67 \cdot 256 + 11 = 2 156 782 459 \)
 - organizations get blocks of IPs
 	- eg. UVA has `128.143.0.0 - 128.143.255.255`
 
@@ -113,7 +113,7 @@ nav_order: 10
 - 128-bit numbers
 - written in hex, 16-bit parts, separated by colons
 - strings of 0s represented by double-colons
-- typically given in blocks of $2^{80}$ or $2^{64}$ addresses
+- typically given in blocks of \( 2^{80} \) or \( 2^{64} \) addresses
 
 ## IPv4 Addresses and Routing Tables
 <div style="text-align: center;">

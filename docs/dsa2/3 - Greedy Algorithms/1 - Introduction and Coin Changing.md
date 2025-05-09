@@ -33,18 +33,18 @@ nav_order: 1
 	- at most 2 dimes
 	- cannot contain 2 dimes and 1 nickel
 - **claim**: argue that at every step, greedy choice is part of some optimal solution
-- **case 1**: suppose $x<5$
+- **case 1**: suppose \( x<5 \)
 	- optimal solution must contain a penny
 	- **greedy choice**: penny
-- **case 2**: suppose $5≤x<10$
+- **case 2**: suppose \( 5≤x<10 \)
 	- optimal solution must contain a nickel
-		- suppose otherwise, then optimal solution can only contain pennies, so it must contain $x>4$ pennies (contradiction)
+		- suppose otherwise, then optimal solution can only contain pennies, so it must contain \( x>4 \) pennies (contradiction)
 	- **greedy choice**: nickel
-- **case3**: suppose $10≤x<25$
+- **case3**: suppose \( 10≤x<25 \)
 	- optimal solution must contain a dime
 		- suppose otherwise, then optimal solution can contain at most 1 nickel, so there must be at least 5 pennies in the optimal solution (contradiction)
 	- **greedy choice**: dime
-- **case 4**: suppose $25≤x$
+- **case 4**: suppose \( 25≤x \)
 	- optimal solution must contain a quarter
 		- suppose otherwise:
 			1. if it contains 2 dimes, then it can contain 0 nickels, in which case it contains at least 5 pennies (contradiction)

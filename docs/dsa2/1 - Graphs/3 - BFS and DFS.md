@@ -10,15 +10,15 @@ nav_order: 3
 
 ### Specific Input/Output
 - **Input**:
-	- A graph $G$
-	- A single start vertex $s$
+	- A graph \( G \)
+	- A single start vertex \( s \)
 - **Output**:
-	- Distance from $s$ to each node in $G$ (distance = # of edges)
-	- Breadth First Tree of $G$ with root $s$
+	- Distance from \( s \) to each node in \( G \) (distance = # of edges)
+	- Breadth First Tree of \( G \) with root \( s \)
 - **Strategy**
-	- Start with node $s$, visit all neighbors of $s$, then all neighbors of neighbors of $s$, …
+	- Start with node \( s \), visit all neighbors of \( s \), then all neighbors of neighbors of \( s \), …
 - **Important**
-	- the paths in this BFS tree represent the **shortest paths** from $s$ to each node in $G$
+	- the paths in this BFS tree represent the **shortest paths** from \( s \) to each node in \( G \)
 	- status of nodes can be tracked by color:
 		- black = node seen, removed from queue, neighbors seen
 		- gray = node seen, added to queue for processing
@@ -26,7 +26,7 @@ nav_order: 3
 
 ![[Screenshot 2025-01-27 at 10.29.43 PM.png | center | 500]]
 
-> [!example] Breadth First Search Pseudocode
+> [!EXAMPLE] Breadth First Search Pseudocode
 > 
 > ```
 >def bfs(graph, s):
@@ -42,7 +42,7 @@ nav_order: 3
 ### Shortest Path
 - idea: when a node is seen, track its “layer” depth
 
-> [!example] Shortest Path Pseudocode
+> [!EXAMPLE] Shortest Path Pseudocode
 > ```
 > # Idea: when a node is seen, remember its “layer” depth
 > def shortest_path(graph, s, t):
@@ -67,12 +67,12 @@ nav_order: 3
 ![[Screenshot 2025-01-28 at 1.50.59 PM.png]]
 
 ### Analysis
-- For a graph having $V$ vertices and $E$ edges
-	- Each edge is processed once in the whole loop for the cost of $\Theta(E)$
-	- Each vertex is put into the queue once and removed from the queue and processed once, for a cost of $\Theta(V)$
-		- Cost of initializing colors or depth arrays is $\Theta(V)$
-- Total **time-complexity**: $\Theta(V+E)$, linear time
-- Total **space complexity**:extra space is used for queue and also depth/color arrays/ so $\Theta(V)$
+- For a graph having \( V \) vertices and \( E \) edges
+	- Each edge is processed once in the whole loop for the cost of \( \Theta(E) \)
+	- Each vertex is put into the queue once and removed from the queue and processed once, for a cost of \( \Theta(V) \)
+		- Cost of initializing colors or depth arrays is \( \Theta(V) \)
+- Total **time-complexity**: \( \Theta(V+E) \), linear time
+- Total **space complexity**:extra space is used for queue and also depth/color arrays/ so \( \Theta(V) \)
 
 ## Bipartite Graphs
 - An (undirected) graph is **Bipartite** provided every vertex can be assigned to one of two teams such that every edge “crosses” teams
@@ -80,7 +80,7 @@ nav_order: 3
 - A graph is only bipartite if and only if it has no **odd length cycles**
 ![[Screenshot 2025-05-08 at 8.29.01 PM.png]]
 
-> [!example] BFS Bipartite Pseudocode
+> [!EXAMPLE] BFS Bipartite Pseudocode
 > ```
 > # Idea: Check for edges in the same layer
 > def shortest_path(graph, s, t):
@@ -116,11 +116,11 @@ nav_order: 3
 	- May or may not have reached all vertices
 
 ### Specific Input/Output
-- **Input**: a node $s$
-- **Behavior**: start with node $s$, visit one neighbor of $s$, then all nodes reachable from that neighbor of $s$, then another neighbor of $s$, …
+- **Input**: a node \( s \)
+- **Behavior**: start with node \( s \), visit one neighbor of \( s \), then all nodes reachable from that neighbor of \( s \), then another neighbor of \( s \), …
 - **Output**: does the graph have a cycle? A topological sort of graph
 
-> [!example] DFS Non-recursive Pseudocode (less common)
+> [!EXAMPLE] DFS Non-recursive Pseudocode (less common)
 > ```
 > def dfs(graph, s):  
 > 	toVisit.push(s)  
@@ -133,7 +133,7 @@ nav_order: 3
 > 				toVisit.push(v)
 > ```
 
-> [!example] DFS Recursive Pseudocode
+> [!EXAMPLE] DFS Recursive Pseudocode
 > ```pseudocode
 > def dfs(graph, s):
 > 	seen = [False, False, False, ...]
@@ -152,23 +152,23 @@ nav_order: 3
 - Consider the “seen times” and “done times” of nodes
 - As DFS traverses a digraph, edges can be categorized:
 	- **Tree Edge**
-		- $(a,b)$ was followed when pushing
-		- $(a,b)$ when $b$ was unseen when we were at $a$
+		- \( (a,b) \) was followed when pushing
+		- \( (a,b) \) when \( b \) was unseen when we were at \( a \)
 	- **Back Edge**
-		- $(a,b)$ goes to an “ancestor”
-		- $a$ and $b$ seen but not done when we saw $(a,b)$
-		- $t_{seen}(b)<t_{seen}(a)<t_{done}(a)<t_{done}(b)$
+		- \( (a,b) \) goes to an “ancestor”
+		- \( a \) and \( b \) seen but not done when we saw \( (a,b) \)
+		- \( t_{seen}(b)<t_{seen}(a)<t_{done}(a)<t_{done}(b) \)
 	- **Forward Edge**
-		- $(a,b)$ goes to a “descendant”
-		- $b$ was seen and done between when $a$ was seen and done
-		- $t_{seen}(a)<t_{seen}(b)<t_{done}(b)<t_{done}(a)$
+		- \( (a,b) \) goes to a “descendant”
+		- \( b \) was seen and done between when \( a \) was seen and done
+		- \( t_{seen}(a)<t_{seen}(b)<t_{done}(b)<t_{done}(a) \)
 	- **Cross Edge**
-		- $(a,b)$ connects “branches” of the tree
-		- $b$ was seen and done before $a$ was ever seen
-		- $(a,b)$ when $t_{done}(b)>t_{seen}(a)$
+		- \( (a,b) \) connects “branches” of the tree
+		- \( b \) was seen and done before \( a \) was ever seen
+		- \( (a,b) \) when \( t_{done}(b)>t_{seen}(a) \)
 ![[Screenshot 2025-05-08 at 8.41.25 PM.png]]
 
-> [!example] DFS: Cycle Detection Pseudocode
+> [!EXAMPLE] DFS: Cycle Detection Pseudocode
 > ```
 > # Idea: Look for a back edge
 > def dfs(graph, s):
@@ -193,7 +193,7 @@ nav_order: 3
 	- The parent node of the current node is seen but not done
 	- Edges are bidirectional in undirected graphs
 
-> [!example] DFS “Sweep” to Process All Nodes Pseudocode
+> [!EXAMPLE] DFS “Sweep” to Process All Nodes Pseudocode
 > ``` pseudocode
 > def dfs_sweep(graph):    # no start node given
 > 	seen = [False, False, False, ...]
@@ -211,14 +211,14 @@ nav_order: 3
 > ```
 
 ### Time Complexity of DFS
-- For a digraph having $V$ vertices end $E$ edges
-	- Each edge is processed once in the while loop of `dfs_rec()` for a cost of $\Theta(E)$
+- For a digraph having \( V \) vertices end \( E \) edges
+	- Each edge is processed once in the while loop of `dfs_rec()` for a cost of \( \Theta(E) \)
 		- Thank about **adjacency list** data structure
 		- Traverse each list exactly once (never back up)
-		- There are a total of $E$ modes in all the lists
-	- The non-recursive `dfs()` algorithm will do $\Theta(V)$ work even if there are no edges in the graph
-	- Total time-complexity is $\Theta(V+E)$
+		- There are a total of \( E \) modes in all the lists
+	- The non-recursive `dfs()` algorithm will do \( \Theta(V) \) work even if there are no edges in the graph
+	- Total time-complexity is \( \Theta(V+E) \)
 		- Remember: this means the larger of the two values
 		- Reminder: this is considered “linear” for graphs since there are two size parameters for graphs
 	- Extra space is used for seen/done (or color) array
-		- Space complexity is $\Theta(V)$
+		- Space complexity is \( \Theta(V) \)

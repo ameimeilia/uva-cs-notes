@@ -24,10 +24,10 @@ nav_order: 13
 	- Hard to find another message with the same tag without the key.
 - **Authenticated Encryption**: Combines symmetric encryption and MAC to prevent both unauthorized access and corruption.
 ### 1.4 Asymmetric ciphers
-- Key pairs with one public key ($k_1$) for encryption and one private key ($k_2$) for decryption.
+- Key pairs with one public key (\( k_1 \)) for encryption and one private key (\( k_2 \)) for decryption.
 - Properties:
-	- Only $k_2$ can decrypt messages encrypted with $k_1$.
-	- Determining $k_2$ or the message from public key info is difficult.
+	- Only \( k_2 \) can decrypt messages encrypted with \( k_1 \).
+	- Determining \( k_2 \) or the message from public key info is difficult.
 - Should be randomized to prevent attackers from predicting encrypted outcomes of small message sets.
 ### 1.5 Digital Signatures
 - Provides message verification with signing (s) and verifying (v) functions.
@@ -38,17 +38,17 @@ nav_order: 13
 ### 1.6 Diffie-Hellman Key Exchange
 - Allows two parties to agree on a shared secret without revealing it to eavesdroppers.
 - Steps:
-    - 1. Agree (in public) on an initial random number $g$
+    - 1. Agree (in public) on an initial random number \( g \)
 	1. Each (privately, without telling anyone at all) pick a second random number, their private key
-	2. Each applies the operator to $g$ and their key, sharing the result (in public) with the others
+	2. Each applies the operator to \( g \) and their key, sharing the result (in public) with the others
 	3. Each applies the operator to what they received and their key to attain their shared secret
 
 | person A knows | shared publicly | person B knows |
 | -------------- | --------------- | -------------- |
-|                | $f,g$           |                |
-| $a$            |                 | $b$            |
-|                | $f(g,a),f(g,b)$ |                |
-| $f(f(g,b),a)$  |                 | $f(f(g,a),b)$  |
+|                | \( f,g \)           |                |
+| \( a \)            |                 | \( b \)            |
+|                | \( f(g,a),f(g,b) \) |                |
+| \( f(f(g,b),a) \)  |                 | \( f(f(g,a),b) \)  |
 ### 1.7 Cryptographically-secure random numbers
 - **Need for Secure Randomness**: Essential for security, ensuring unpredictability despite knowledge of generating code.
 - **Pseudo-Random Generators**: Most software RNGs are deterministic and predictable if internal state is known.

@@ -59,7 +59,7 @@ nav_order: 5
 movq $0xFFFFFFFFFFFFFFFF, %rax
 movl $0x1, %eax
 
-// %rax is $0x1, not $0xFFFFFFFF00000001
+// %rax is \( 0x1, not  \)0xFFFFFFFF00000001
 ```
 
 - setting 8 or 16-bit registers does not clear the 64-bit register

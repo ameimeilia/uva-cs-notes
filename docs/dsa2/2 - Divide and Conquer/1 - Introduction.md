@@ -35,16 +35,16 @@ nav_order: 1
 ![[Screenshot 2025-02-23 at 3.41.19 PM.png]]
 
 ### Analyzing Divide and Conquer
-- **Divide**: $D(n)$ time
-- **Conquer**: Recurse on smaller problems of size $s_1, …, s_k$
-- **Combine**: $C(n)$ time
-- **Recurrence**: $T(n) = D(n) + \Sigma_{i\in[k]}T(s_i) + C(n)$
+- **Divide**: \( D(n) \) time
+- **Conquer**: Recurse on smaller problems of size \( s_1, …, s_k \)
+- **Combine**: \( C(n) \) time
+- **Recurrence**: \( T(n) = D(n) + \Sigma_{i\in[k]}T(s_i) + C(n) \)
 
 ## MergeSort
-- **Divide**: break $n$-element list into two lists of $\frac{n}{2}$ elements
+- **Divide**: break \( n \)-element list into two lists of \( \frac{n}{2} \) elements
 - **Conquer**:
-	- if $n>1$: sort each sublist recursively
-	- if $n=1$: list is already sorted (base case)
+	- if \( n>1 \): sort each sublist recursively
+	- if \( n=1 \): list is already sorted (base case)
 - **Combine**: merge together sorted sublists into one sorted list
 
 >[!example] MergeSort Divide and Conquer Solution
@@ -74,6 +74,6 @@ nav_order: 1
 
 ### Analyzing Merge Sort
 - **Divide**: 0 comparisons
-- **Conquer**: recurse on 2 small problems, size $\frac{n}{2}$
-- **Combine**: $n$ comparisons
-- **Recurrence**: $T(n) = 2T(\frac{n}{2})+n$
+- **Conquer**: recurse on 2 small problems, size \( \frac{n}{2} \)
+- **Combine**: \( n \) comparisons
+- **Recurrence**: \( T(n) = 2T(\frac{n}{2})+n \)

@@ -14,3 +14,13 @@ callouts:
   note:
     title: Note
     color: purple
+
+  example:
+    title: Example
+    color: purple
+
+markdown: kramdown
+
+kramdown:
+  math_engine: mathjax
+  input: GFM

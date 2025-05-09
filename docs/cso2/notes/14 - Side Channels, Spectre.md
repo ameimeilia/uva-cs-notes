@@ -35,11 +35,11 @@ int check_passphrase(const char *versus) {
 	- ex. multiplying 500+ bit numbers together
 
 **Big Integer Multiplication**
-- suppose we have two 64-bit integers, $x, y$ that we want to multiple into a 128-bit product
+- suppose we have two 64-bit integers, \( x, y \) that we want to multiple into a 128-bit product
 - multiply only does 64-bit products
 - solution:
-	1. divide $x, y$ into 32-bit parts: $x=x_1 \cdot 2^{32} + x_0$ and $y=y_1 \cdot 2^{32} + y_0$
-	2. $xy = x_1y_12^{64} + x_1y_0 \cdot 2^{32} + x_0y_1 \cdot 2^{32} + x_0y_0$
+	1. divide \( x, y \) into 32-bit parts: \( x=x_1 \cdot 2^{32} + x_0 \) and \( y=y_1 \cdot 2^{32} + y_0 \)
+	2. \( xy = x_1y_12^{64} + x_1y_0 \cdot 2^{32} + x_0y_1 \cdot 2^{32} + x_0y_0 \)
 
 **Big Integers and Cryptography**
 - native multiplication idea: number of steps depends on size of numbers
