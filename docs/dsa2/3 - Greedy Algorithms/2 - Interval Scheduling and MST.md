@@ -1,4 +1,11 @@
-# 2 - Interval Scheduling and MST
+---
+layout: default
+title: Interval Scheduling and MST
+parent: Greedy Algorithms Notes
+nav_order: 2
+---
+# Interval Scheduling and MST
+
 ## Interval Scheduling
 - input: list of events with their start and end times
 - output: largest set of non-conflicting events

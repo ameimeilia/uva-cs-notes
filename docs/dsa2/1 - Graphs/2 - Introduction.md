@@ -1,4 +1,10 @@
-# 2 - Introduction
+---
+layout: default
+title: Introduction
+parent: Graphs Notes
+nav_order: 2
+---
+# Introduction
 
 ## Graphs
 - Definition: $G = (V,E)$ where $V$ = vertices/nodes and $E$ = edges

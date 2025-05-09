@@ -1,4 +1,10 @@
-# 3 - Reductions
+---
+layout: default
+title: Reductions
+parent: Reductions Notes
+nav_order: 3
+---
+# Reductions
 - Algorithm technique of supreme ultimate power
 - Convert instance of Problem A to an instance of Problem B
 - Convert solution of Problem B back to a solution of Problem A

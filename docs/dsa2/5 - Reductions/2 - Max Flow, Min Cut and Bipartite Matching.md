@@ -1,4 +1,10 @@
-# 2 - Max Flow, Min Cut and Bipartite Matching
+---
+layout: default
+title: Max Flow, Min Cut and Bipartite Matching
+parent: Reductions Notes
+nav_order: 2
+---
+# Max Flow, Min Cut and Bipartite Matching
 
 ## Max Flow/Min Cut
 

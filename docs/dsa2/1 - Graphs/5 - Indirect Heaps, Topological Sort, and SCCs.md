@@ -1,4 +1,10 @@
-# 5 - Indirect Heaps, Topological Sort, and SCCs
+---
+layout: default
+title: Indirect Heaps, Topological Sort, and SCCs
+parent: Graphs Notes
+nav_order: 5
+---
+# Indirect Heaps, Topological Sort, and SCCs
 
 ## Indirect Heaps
 - Indirect heaps are an example of the common computing principle of **indirection**:

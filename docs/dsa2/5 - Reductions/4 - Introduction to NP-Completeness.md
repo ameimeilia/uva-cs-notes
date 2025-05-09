@@ -1,4 +1,10 @@
-# 4 - Introduction to NP-Completeness
+---
+layout: default
+title: Introduction to NP-Completeness
+parent: Reductions Notes
+nav_order: 4
+---
+# Introduction to NP-Completeness
 
 ## Introduction
 - What we could prove that some problems are (most likely) hard?

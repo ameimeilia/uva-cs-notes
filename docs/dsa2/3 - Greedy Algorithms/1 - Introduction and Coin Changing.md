@@ -1,4 +1,10 @@
-# 1 - Introduction and Coin Changing
+---
+layout: default
+title: Introduction and Coin Changing
+parent: Greedy Algorithms Notes
+nav_order: 1
+---
+# Introduction and Coin Changing
 - **greedy algorithm**: makes the best decision it can at a given point, no undoing or looking ahead
 - **optimization problems**:
 	- a solution must meet certain constraints:

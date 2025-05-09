@@ -1,4 +1,10 @@
-# 1 - Introduction, Log Cutting, and Matrix Chaining
+---
+layout: default
+title: Introduction, Log Cutting, and Matrix Chaining
+parent: Dynamic Programming Notes
+nav_order: 1
+---
+# Introduction, Log Cutting, and Matrix Chaining
 Requires **Optimal Substructure**
 	- Solution to larger problem contains the (optimal) solutions to smaller ones
 

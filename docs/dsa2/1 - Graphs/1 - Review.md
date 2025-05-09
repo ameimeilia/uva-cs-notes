@@ -1,4 +1,10 @@
-# 1 - Review
+---
+layout: default
+title: Review
+parent: Graphs Notes
+nav_order: 1
+---
+# Review
 
 > [!info] Readings in CLRS 4th edition:
 > • CLRS Chapter 2: insertion sort (if needed), book’s pseudocode conventions  

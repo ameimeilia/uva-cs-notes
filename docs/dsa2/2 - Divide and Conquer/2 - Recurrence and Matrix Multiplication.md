@@ -1,4 +1,10 @@
-# 2 - Recurrence and Matrix Multiplication
+---
+layout: default
+title: Recurrence and Matrix Multiplication
+parent: Divide and Conquer Notes
+nav_order: 2
+---
+# Recurrence and Matrix Multiplication
 
 ## Recurrence Solving Techniques
 1. Tree

@@ -1,4 +1,10 @@
-# 5 - MSCS and Chip and Conquer
+---
+layout: default
+title: MSCS and Chip and Conquer
+parent: Divide and Conquer Notes
+nav_order: 5
+---
+# MSCS and Chip and Conquer
 
 ## Maximum Sum Continuous Subarray
 - the maximum-sum subarray of a given array of integers $A$ is the interval $[a,b]$ such that the sum of all values in the array between $a$ and $b$ inclusive is maximal

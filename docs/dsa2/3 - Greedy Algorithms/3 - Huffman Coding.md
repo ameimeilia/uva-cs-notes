@@ -1,4 +1,10 @@
-# 3 - Huffman Coding
+---
+layout: default
+title: Huffman Coding
+parent: Greedy Algorithms Notes
+nav_order: 3
+---
+# Huffman Coding
 
 ## Introduction: Message Encoding
 - Problem: electronically send a message using binary
@@ -87,7 +93,7 @@
 	- Assume that $c_1, c_2$ are siblings in at least one optimal solution
 	- **Assume that solving the subproblem with this new character, then adding in $c_1, c_2$ is not optimal**
 	- Show that removing $c_1, c_2$ from a better overall solution must produce a better solution to the subproblem
-    
+
 ##### Show Recursive Substructure
 - Show treating $c_1, c_2$ as a new “combined” character gives optimal solution
 - Claim: an optimal solution for $F$ involves finding an optimal solution for $F’$, then adding $c_1,c_2$ as children to $\sigma$

@@ -1,4 +1,10 @@
-# 1 - Introduction
+---
+layout: default
+title: Introduction
+parent: Divide and Conquer Notes
+nav_order: 1
+---
+# Introduction
 - Can you cover an 8x8 grid with 1 square missing using “trominoes”?
 	- What about larger boards?
 - **Solution**:

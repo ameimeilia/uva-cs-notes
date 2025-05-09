@@ -1,4 +1,10 @@
-# 1 - Network Flow
+---
+layout: default
+title: Network Flow
+parent: Reductions Notes
+nav_order: 1
+---
+# Network Flow
 ## Flow Networks
 ![[Screenshot 2025-04-16 at 3.10.03 PM.png | center | 400]]
 - Graph $G = (V,E)$

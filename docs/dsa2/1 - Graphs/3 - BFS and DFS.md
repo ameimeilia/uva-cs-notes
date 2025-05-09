@@ -1,4 +1,10 @@
-# 3 - BFS and DFS
+---
+layout: default
+title: BFS and DFS
+parent: Graphs Notes
+nav_order: 3
+---
+# BFS and DFS
 
 ## Breadth First Search
 

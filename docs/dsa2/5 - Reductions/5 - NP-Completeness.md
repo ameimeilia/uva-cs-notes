@@ -1,4 +1,10 @@
-# 5 - NP-Completeness
+---
+layout: default
+title: NP-Completeness
+parent: Reductions Notes
+nav_order: 5
+---
+# NP-Completeness
 
 ## Complexity Classes
 - **P**: Any problem that can solved by a **deterministic** finite automata (DFA) in polynomial time

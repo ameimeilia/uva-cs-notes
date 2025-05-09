@@ -1,4 +1,10 @@
-# 4 - Dijkstra's
+---
+layout: default
+title: Dijkstra's
+parent: Graphs Notes
+nav_order: 4
+---
+# Dijkstra's
 
 ## Shortest Path
 ### Dijkstra’s Algorithm
@@ -127,6 +133,6 @@
 		- $w(s, …, x) ≥ d_u + w(y, ..., u)$ 
 	- All edge weights assumed to be positive
 		- $w(s, …, x) ≥ d_u$
-        
+
 #### Correctness of Dijkstra’s Algorithm
 - **Conclusion**: all paths $(s, …, u)$ are no shorter than $d_u$ which makes it the shortest path (or one of equally shortest paths)

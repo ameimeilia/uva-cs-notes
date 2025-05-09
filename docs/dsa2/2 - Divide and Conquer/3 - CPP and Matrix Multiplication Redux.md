@@ -1,4 +1,10 @@
-# 3 - CPP and Matrix Multiplication Redux
+---
+layout: default
+title: CPP and Matrix Multiplication Redux
+parent: Divide and Conquer Notes
+nav_order: 3
+---
+# CPP and Matrix Multiplication Redux
 
 ## Closest Pair of Points
 

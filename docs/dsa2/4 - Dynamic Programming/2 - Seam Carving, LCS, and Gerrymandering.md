@@ -1,4 +1,10 @@
-# 2 - Seam Carving, LCS, and Gerrymandering
+---
+layout: default
+title: Seam Carving, LCS, and Gerrymandering
+parent: Dynamic Programming Notes
+nav_order: 2
+---
+# Seam Carving, LCS, and Gerrymandering
 
 ## Seam Carving
 - Cropping: removes a “block” of pixels

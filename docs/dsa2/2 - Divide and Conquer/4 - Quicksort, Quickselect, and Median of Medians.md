@@ -1,4 +1,10 @@
-# 4 - Quicksort, Quickselect, and Median of Medians
+---
+layout: default
+title: Quicksort, Quickselect, and Median of Medians
+parent: Divide and Conquer Notes
+nav_order: 4
+---
+# Quicksort, Quickselect, and Median of Medians
 
 ## Quicksort
 - like Mergesort, its expected runtime is $O(nlogn)$ 
@@ -83,7 +89,7 @@
 	- Notes:
 		- have to do this for every call to Partition in Quicksort
 		- could just use the value returned by median of medians for Quicksort’s Partition
-		
+
 ## Median of Medians
 - decent pivot: both sides of pivot > 30%
 ![[Screenshot 2025-02-23 at 5.18.47 PM.png | center | 400]]
